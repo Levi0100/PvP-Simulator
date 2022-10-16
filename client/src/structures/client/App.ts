@@ -1,6 +1,7 @@
 import { Client, ClientOptions } from 'eris'
 import { readdirSync } from 'fs'
 import mongoose from 'mongoose'
+import path from 'path'
 import { Logger } from '..'
 
 class App extends Client {
@@ -12,22 +13,22 @@ class App extends Client {
   }
 
   async init () {
-    var modules = readdirSync('client/src/commands')
+    var modules = readdirSync(path.join(__dirname, '../../commands'))
     modules.forEach(module => {
-      var commands = readdirSync(`client/src/commands/${module}`)
+      var commands = readdirSync(path.join(__dirname, `../../commands/${module}`))
       commands.forEach(async cmd => {
-        const Command = await import(`../../commands/${module}/${cmd}`)
+        const Command = await import(path.join(__dirname, `../../commands/${module}/${cmd}`))
         const command = new Command.default(this)
 
         this.commands.set(command.name, command)
       })
     })
 
-    var _modules = readdirSync('client/src/listeners')
+    var _modules = readdirSync(path.join(__dirname, '../../listeners'))
     _modules.forEach(module => {
-      var listeners = readdirSync(`client/src/listeners/${module}`)
+      var listeners = readdirSync(path.join(__dirname, `../../listeners/${module}`))
       listeners.forEach(async listen => {
-        const Listener = await import(`../../listeners/${module}/${listen}`)
+        const Listener = await import(path.join(__dirname, `../../listeners/${module}/${listen}`))
         const listener = new Listener.default(this)
 
         this.on(listener.name, (...args) => listener.on(...args))
