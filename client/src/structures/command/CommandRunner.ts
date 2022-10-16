@@ -3,6 +3,7 @@ import Eris, { CommandInteraction } from 'eris'
 import { Guild, User } from '../../../../database'
 import CommandContext from './CommandContext'
 import { get } from '../../../../locales'
+import path from 'path'
 
 export default class CommandRunner {
   client: App
@@ -18,7 +19,7 @@ export default class CommandRunner {
   async init () {
     if (!this.interaction.member) return
 
-    const permissions = await import(`../../../../locales/${this.locale}/permissions.json`)
+    const permissions = await import(path.join(__dirname, `../../../../locales/${this.locale}/permissions.json`))
     const guild = await Guild.findById(this.interaction.guildID)
     const user = await User.findById(this.interaction.member.id)
     const db = {
