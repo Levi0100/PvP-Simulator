@@ -17,13 +17,13 @@ export default class CommandContext {
     this.locale = locale
   }
 
-  reply (content: string | AdvancedMessageContent, options?: object | any) {
+  async reply (content: string | AdvancedMessageContent, options?: object | any) {
     switch (typeof content) {
       case 'string': {
         if (options?.name && options?.file) {
           return this.interaction.createMessage(
             {
-              content: get(this.locale, content, options)
+              content: String(await get(this.locale, content, options))
             },
             {
               file: options?.file,
@@ -33,7 +33,7 @@ export default class CommandContext {
         }
         else return this.interaction.createMessage(
           {
-            content: get(this.locale, content, options)
+            content: String(await get(this.locale, content, options))
           }
         )
       }
@@ -51,13 +51,13 @@ export default class CommandContext {
     }
   }
 
-  edit (content: string | AdvancedMessageContent, options?: object | any) {
+  async edit (content: string | AdvancedMessageContent, options?: object | any) {
     switch (typeof content) {
       case 'string': {
         if (options?.name && options?.file) {
           return this.interaction.editOriginalMessage(
             {
-              content: get(this.locale, content, options)
+              content: String(await get(this.locale, content, options))
             },
             {
               file: options?.file,
@@ -67,7 +67,7 @@ export default class CommandContext {
         }
         else return this.interaction.editOriginalMessage(
           {
-            content: get(this.locale, content, options)
+            content: String(await get(this.locale, content, options))
           }
         )
       }

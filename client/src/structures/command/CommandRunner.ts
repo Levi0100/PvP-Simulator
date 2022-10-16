@@ -3,7 +3,6 @@ import Eris, { CommandInteraction } from 'eris'
 import { Guild, User } from '../../../../database'
 import CommandContext from './CommandContext'
 import { get } from '../../../../locales'
-import path from 'path'
 
 export default class CommandRunner {
   client: App
@@ -19,7 +18,7 @@ export default class CommandRunner {
   async init () {
     if (!this.interaction.member) return
 
-    const permissions = await import(path.join(__dirname, `../../../../locales/${this.locale}/permissions.json`))
+    const permissions = await import(`../../../../locales/${this.locale}/permissions`)
     const guild = await Guild.findById(this.interaction.guildID)
     const user = await User.findById(this.interaction.member.id)
     const db = {
@@ -43,7 +42,7 @@ export default class CommandRunner {
       }
 
       if (arrayPerm[0]) return ctx.reply('helper.permissions.user', {
-        permission: command.permissions.map((perm: string) => `\`${permissions[perm]}\``).join(', ')
+        permission: command.permissions.map((perm: string) => `\`${permissions.default[perm]}\``).join(', ')
       })
     }
 
@@ -61,8 +60,8 @@ export default class CommandRunner {
     }
 
     command.locale = {
-      get: (content: string, args?: object) => {
-        return get(this.locale, content, args)
+      get: async (content: string, args?: object) => {
+        return await get(this.locale, content, args)
       }
     }
     command.getMember = (member: string) => {

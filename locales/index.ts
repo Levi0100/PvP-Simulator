@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs'
 
-const get = (lang: string, content: string, args?: any) => {
-  var locale = JSON.parse(readFileSync(`locales/${lang}/locales.json`, 'utf-8'))
+const get = async (lang: string, content: string, args?: any) => {
+  var locale = await import(`./${lang}/locales`)
 
   for (const file of content.split('.')) {
     locale = locale[file]
