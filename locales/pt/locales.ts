@@ -5,7 +5,5 @@ export const commands = {
 }
 
 export const helper = {
-  'helper': {
-
-  }
+  
 }
