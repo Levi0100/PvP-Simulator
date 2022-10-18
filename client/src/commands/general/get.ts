@@ -106,7 +106,7 @@ export default class GetCommand extends Command {
             const locale = await import(`../../../../locales/${ctx.db.guild.locale}/weapons`)
             var _weapon = locale.weapons[weapon.type!][weapon.name!]
 
-            console.log(weapon)
+            return console.log(weapon)
 
             ctx.reply('commands.get.congrats', {
               weapon: `${_weapon.name} ${_weapon.type}`
