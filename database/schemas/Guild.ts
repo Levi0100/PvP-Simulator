@@ -6,11 +6,7 @@ const guild = new Schema({
     type: String,
     default: 'en'
   },
-  plan: String,
-  allowedChannels: {
-    type: Array,
-    default: []
-  }
+  plan: String
 })
 
 export default model('guilds', guild)

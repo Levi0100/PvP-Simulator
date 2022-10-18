@@ -42,7 +42,7 @@ export default class CommandRunner {
       }
 
       if (arrayPerm[0]) return ctx.reply('helper.permissions.user', {
-        permission: command.permissions.map((perm: string) => `\`${permissions.default[perm]}\``).join(', ')
+        permissions: command.permissions.map((perm: string) => `\`${permissions.default[perm]}\``).join(', ')
       })
     }
 
@@ -55,9 +55,11 @@ export default class CommandRunner {
       }
 
       if (arrayPerm[0]) return ctx.reply('helper.permissions.bot', {
-        permission: command.permissions.map((perm: string) => `\`${permissions[perm]}\``).join(', ')
+        permissions: command.permissions.map((perm: string) => `\`${permissions[perm]}\``).join(', ')
       })
     }
+
+    if (command.category === 'general' && !user && command.name !== 'start') return ctx.reply('helper.you_dont_have_data')
 
     command.locale = {
       get: async (content: string, args?: object) => {

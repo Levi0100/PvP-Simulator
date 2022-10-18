@@ -30,10 +30,7 @@ export default class HelpCommand extends Command {
     categories.forEach(category => {
       const cmds = commands.filter(cmd => cmd.category === category)
       .sort((a, b) => a.name.localeCompare(b.name))
-      .map(cmd => {
-        if (cmd.options) return `\`/${cmd.name} ${cmd.options[0].name}\``
-        else return `\`/${cmd.name}\``
-      })
+      .map(cmd => `\`/${cmd.name}\``)
       .join(', ')
 
       if (category) embed.addField(category, cmds)

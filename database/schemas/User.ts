@@ -5,6 +5,14 @@ const user = new Schema({
   granex: {
     type: Number,
     default: 0
+  },
+  refinedGranex: {
+    type: Number,
+    default: 0
+  },
+  dailyTime: {
+    type: Number,
+    default: 0
   }
 })
 
