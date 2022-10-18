@@ -101,6 +101,12 @@ export default class GetCommand extends Command {
               }
             )
 
+            if (percentual <= 2) console.log('Arma 5 estrelas')
+            if (percentual <= 11) console.log('Arma 4 estrelas')
+            if (percentual <= 16) console.log('Arma 3 estrelas')
+            if (percentual <= 25) console.log('Arma 2 estrelas')
+            if (percentual <= 46) console.log('Arma 1 estrelas')
+            else console.log('.')
 
             var weapon = weapons[Math.floor(Math.random() * weapons.length)]
             const locale = await import(`../../../../locales/${ctx.db.guild.locale}/weapons`)
