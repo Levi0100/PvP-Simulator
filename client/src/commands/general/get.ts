@@ -65,28 +65,28 @@ export default class GetCommand extends Command {
                 }
               }
             )
-            if (percentual <= 11) weapons = await Weapon.find(
+            else if (percentual <= 11) weapons = await Weapon.find(
               {
                 stars: {
                   $eq: 4
                 }
               }
             )
-            if (percentual <= 16) weapons = await Weapon.find(
+            else if (percentual <= 16) weapons = await Weapon.find(
               {
                 stars: {
                   $eq: 3
                 }
               }
             )
-            if (percentual <= 25) weapons = await Weapon.find(
+            else if (percentual <= 25) weapons = await Weapon.find(
               {
                 stars: {
                   $eq: 2
                 }
               }
             )
-            if (percentual <= 46) weapons = await Weapon.find(
+            else if (percentual <= 46) weapons = await Weapon.find(
               {
                 stars: {
                   $eq: 1
@@ -102,10 +102,10 @@ export default class GetCommand extends Command {
             )
 
             if (percentual <= 2) console.log('Arma 5 estrelas')
-            if (percentual <= 11) console.log('Arma 4 estrelas')
-            if (percentual <= 16) console.log('Arma 3 estrelas')
-            if (percentual <= 25) console.log('Arma 2 estrelas')
-            if (percentual <= 46) console.log('Arma 1 estrelas')
+            else if (percentual <= 11) console.log('Arma 4 estrelas')
+            else if (percentual <= 16) console.log('Arma 3 estrelas')
+            else if (percentual <= 25) console.log('Arma 2 estrelas')
+            else if (percentual <= 46) console.log('Arma 1 estrelas')
             else console.log('.')
 
             var weapon = weapons[Math.floor(Math.random() * weapons.length)]
