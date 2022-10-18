@@ -53,7 +53,8 @@ export default class ConfigCommand extends Command {
             }
           ]
         }
-      ]
+      ],
+      category: 'config'
     })
   }
 

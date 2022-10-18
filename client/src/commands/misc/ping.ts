@@ -8,7 +8,8 @@ export default class PingCommand extends Command {
       description_localizations: {
         'pt-BR': 'Latência do Bot'
       },
-      client
+      client,
+      category: 'misc'
     })
   }
 
