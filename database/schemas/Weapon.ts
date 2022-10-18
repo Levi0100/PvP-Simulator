@@ -2,8 +2,10 @@ import { Schema, model } from 'mongoose'
 
 const weapon = new Schema({
   _id: String,
-  star: Number,
-  artifacts: Array
+  type: String,
+  name: String,
+  stars: Number,
+  damage: Number
 })
 
 export default model('weapons', weapon)

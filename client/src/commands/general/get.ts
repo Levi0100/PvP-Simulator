@@ -1,3 +1,4 @@
+import { Weapon } from '../../../../database'
 import { Command, CommandContext } from '../../structures'
 
 export default class GetCommand extends Command {
@@ -57,13 +58,57 @@ export default class GetCommand extends Command {
           }
           break
           default: {
-            if (percentual <= 2) return ctx.reply('Arma 5 estrelas')
-            if (percentual <= 11) return ctx.reply('Arma 4 estrelas')
-            if (percentual <= 16) return ctx.reply('Arma 3 estrelas')
-            if (percentual <= 25) return ctx.reply('Arma 2 estrelas')
-            if (percentual <= 46) return ctx.reply('Arma 1 estrela')
+            if (percentual <= 2) weapons = await Weapon.find(
+              {
+                stars: {
+                  $eq: 5
+                }
+              }
+            )
+            if (percentual <= 11) weapons = await Weapon.find(
+              {
+                stars: {
+                  $eq: 4
+                }
+              }
+            )
+            if (percentual <= 16) weapons = await Weapon.find(
+              {
+                stars: {
+                  $eq: 3
+                }
+              }
+            )
+            if (percentual <= 25) weapons = await Weapon.find(
+              {
+                stars: {
+                  $eq: 2
+                }
+              }
+            )
+            if (percentual <= 46) weapons = await Weapon.find(
+              {
+                stars: {
+                  $eq: 1
+                }
+              }
+            )
+            else weapons = await Weapon.find(
+              {
+                stars: {
+                  $eq: 1
+                }
+              }
+            )
 
-            else return ctx.reply('Arma 1 estrela')
+
+            var weapon = weapons[Math.floor(Math.random() * weapons.length)]
+            const locale = await import(`../../../../locales/${ctx.db.guild.locale}/weapons`)
+            var _weapon = locale.weapons[weapon.type!][weapon.name!]
+
+            ctx.reply('commands.get.congrats', {
+              weapon: `${_weapon.name} ${_weapon.type}`
+            })
           }
         }
       }

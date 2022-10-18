@@ -1,5 +1,5 @@
 import App from '../client/App'
-import { Guild, CommandInteraction , AdvancedMessageContent } from 'eris'
+import { Guild, CommandInteraction, AdvancedMessageContent } from 'eris'
 import { get } from '../../../../locales'
 
 export default class CommandContext {
@@ -9,7 +9,7 @@ export default class CommandContext {
   interaction: CommandInteraction
   locale: any
 
-  constructor (client: App, db: any, guild: Guild, interaction: CommandInteraction, locale: any) {
+  constructor(client: App, db: any, guild: Guild, interaction: CommandInteraction, locale: any) {
     this.client = client
     this.db = db
     this.guild = guild
@@ -17,7 +17,7 @@ export default class CommandContext {
     this.locale = locale
   }
 
-  async reply (content: string | AdvancedMessageContent | object, options?: object | any) {
+  async reply(content: string | AdvancedMessageContent | object, options?: object | any) {
     switch (typeof content) {
       case 'string': {
         if (options?.name && options?.file) {
@@ -51,7 +51,7 @@ export default class CommandContext {
     }
   }
 
-  async edit (content: string | AdvancedMessageContent | object, options?: object | any) {
+  async edit(content: string | AdvancedMessageContent, options?: object | any) {
     switch (typeof content) {
       case 'string': {
         if (options?.name && options?.file) {
@@ -72,7 +72,7 @@ export default class CommandContext {
         )
       }
       case 'object': {
-        if (options?.options && options?.name) {
+        if (options?.file && options?.name) {
           return this.interaction.editOriginalMessage(Object.assign(content),
             {
               file: options?.file,
@@ -80,6 +80,15 @@ export default class CommandContext {
             }
           )
         }
+        else if (content.content && options.file) return this.interaction.editOriginalMessage(
+          {
+            content: await get(this.locale, content.content, options)
+          },
+          {
+            file: options.file,
+            name: options.name
+          }
+        )
         else return this.interaction.editOriginalMessage(Object.assign(content))
       }
     }

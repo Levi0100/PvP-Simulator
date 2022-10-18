@@ -10,6 +10,11 @@ export const commands = {
   start: {
     you_already_created_data: 'You already created your data. You are welcome to play **PvP Simulator**.',
     done: 'Your data has been created successfully. You can already play **PvP Simulator**.'
+  },
+  daily: {
+    has_been_picked: 'You already picked your daily prize. Try again {time}',
+    congrats: 'In the today\'s daily you received {granex} Granex!',
+    congrats2: 'Congratulations, what a lucky guy you are! You received a bonus of {refinedGranex} Refined Granex.'
   }
 }
 
