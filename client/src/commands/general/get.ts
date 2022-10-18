@@ -67,7 +67,7 @@ export default class GetCommand extends Command {
             if (percentual <= 11) return ctx.reply('Arma 4 estrelas')
             if (percentual <= 35) return ctx.reply('Arma 3 estrelas')
             if (percentual <= 62) return ctx.reply('Arma 2 estrelas')
-            if (percentual <= 77) return ctx.reply('Arma 1 estrela')
+            if (percentual <= 90) return ctx.reply('Arma 1 estrela')
             
             else return ctx.reply('Erro na porcentagem')
           }
