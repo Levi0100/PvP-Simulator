@@ -1,4 +1,4 @@
-import { Client, ClientOptions } from 'eris'
+import { Client, ClientOptions, } from 'eris'
 import { readdirSync } from 'fs'
 import mongoose from 'mongoose'
 import path from 'path'

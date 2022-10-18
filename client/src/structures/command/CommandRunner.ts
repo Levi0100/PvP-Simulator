@@ -84,6 +84,7 @@ export default class CommandRunner {
     command.run(ctx)
     .catch((error: any) => {
       //new Logger(this.client).error(error)
+      console.error(error)
       ctx.reply('helper.error', { error })
     })
   }

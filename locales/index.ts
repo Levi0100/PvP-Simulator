@@ -1,11 +1,9 @@
-import { readFileSync } from 'fs'
-
 const get = async (lang: string, content: string, args?: any) => {
   var locale = await import(`./${lang}/locales`)
 
   for (const file of content.split('.')) {
     locale = locale[file]
-    if (!locale) return content
+    if (!locale) return content as string
   }
 
   if (args) {
@@ -13,7 +11,7 @@ const get = async (lang: string, content: string, args?: any) => {
       locale = locale.replaceAll(`{${arg}}`, args[arg])
     }
   }
-  return locale
+  return locale as string
 }
 
 export {

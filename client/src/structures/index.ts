@@ -4,6 +4,7 @@ import CommandContext from './command/CommandContext'
 import CommandRunner from './command/CommandRunner'
 import Listener from './client/Listener'
 import Logger from './util/Logger'
+import Embed from './embed/Embed'
 
 export {
   App,
@@ -12,5 +13,6 @@ export {
   CommandContext,
   CommandRunner,
   Listener,
-  Logger
+  Logger,
+  Embed
 }
