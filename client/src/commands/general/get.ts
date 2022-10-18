@@ -57,13 +57,13 @@ export default class GetCommand extends Command {
           }
           break
           default: {
-            if (percentual <= 46) return ctx.reply('Arma 1 estrela')
-            if (percentual <= 25) return ctx.reply('Arma 2 estrelas')
-            if (percentual <= 16) return ctx.reply('Arma 3 estrelas')
-            if (percentual <= 11) return ctx.reply('Arma 4 estrelas')
             if (percentual <= 2) return ctx.reply('Arma 5 estrelas')
-            
-            else return ctx.reply('Erro na porcentagem')
+            if (percentual <= 11) return ctx.reply('Arma 4 estrelas')
+            if (percentual <= 16) return ctx.reply('Arma 3 estrelas')
+            if (percentual <= 25) return ctx.reply('Arma 2 estrelas')
+            if (percentual <= 46) return ctx.reply('Arma 1 estrela')
+
+            else return ctx.reply('Arma 1 estrela')
           }
         }
       }
