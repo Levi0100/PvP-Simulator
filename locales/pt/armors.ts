@@ -33,8 +33,8 @@ export const armors = {
   },
   chest: {
     angels: {
-      name: 'Anjos',
-      type: 'Peitoral dos',
+      type: 'Anjos',
+      name: 'Peitoral dos',
       stars: 5,
       def: 8
     },
@@ -45,8 +45,8 @@ export const armors = {
       def: 6
     },
     blood: {
-      name: 'Sangue',
-      type: 'Peitoral de',
+      type: 'Sangue',
+      name: 'Peitoral de',
       stars: 3,
       def: 5
     },
@@ -65,14 +65,14 @@ export const armors = {
   },
   pants: {
     angels: {
-      name: 'Anjos',
-      type: 'Calça dos',
+      type: 'Anjos',
+      name: 'Calça dos',
       stars: 5,
       def: 5
     },
     dark: {
-      name: 'Sombras',
-      type: 'Calça das',
+      type: 'Sombras',
+      name: 'Calça das',
       stars: 4,
       def: 3
     },
@@ -97,14 +97,14 @@ export const armors = {
   },
   boots: {
     angels: {
-      name: 'Anjos',
-      type: 'Bota dos',
+      type: 'Anjos',
+      name: 'Bota dos',
       stars: 5,
       def: 3
     },
     dark: {
-      name: 'Sombras',
-      type: 'Bota das',
+      type: 'Sombras',
+      name: 'Bota das',
       stars: 4,
       def: 2
     },
