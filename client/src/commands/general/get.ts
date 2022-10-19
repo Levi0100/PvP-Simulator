@@ -1,4 +1,4 @@
-import { Weapon, Armor } from '../../../../database'
+import { Weapon, Armor, User } from '../../../../database'
 import { Command, CommandContext } from '../../structures'
 
 export default class GetCommand extends Command {
@@ -38,6 +38,7 @@ export default class GetCommand extends Command {
   }
 
   async run (ctx: CommandContext) {
+    const user = await User.findById(ctx.interaction.member?.id)
     const option = ctx.interaction.data.options![0]
 
     var array = [
@@ -166,7 +167,122 @@ export default class GetCommand extends Command {
       }
       break
       case 'refined': {
-        
+        if (!user?.refinedGranex) return ctx.reply('commands.get.you_dont_have_refined_granex')
+        var percentual = Math.random() * 100
+
+        switch (weaponOrArmor) {
+          case 'armor': {
+            var armors
+
+            if (percentual <= 2) armors = await Armor.find(
+              {
+                stars: {
+                  $eq: 5
+                }
+              }
+            )
+            else if (percentual <= 14) armors = await Armor.find(
+              {
+                stars: {
+                  $eq: 4
+                }
+              }
+            )
+            else if (percentual <= 19) armors = await Armor.find(
+              {
+                stars: {
+                  $eq: 3
+                }
+              }
+            )
+            else if (percentual <= 25) armors = await Armor.find(
+              {
+                stars: {
+                  $eq: 2
+                }
+              }
+            )
+            else if (percentual <= 40) armors = await Armor.find(
+              {
+                stars: {
+                  $eq: 1
+                }
+              }
+            )
+            else armors = await Armor.find(
+              {
+                stars: {
+                  $eq: 1
+                }
+              }
+            )
+
+            var armor = armors[Math.floor(Math.random() * armors.length)]
+            const locale = await import(`../../../../locales/${ctx.db.guild.locale}/armors`)
+
+            var _armor = locale.armors[armor.type!][armor.name!]
+
+            ctx.reply('commands.get.congrats2', {
+              armor: `${_armor.name} ${_armor.type}`
+            })
+          }
+          break
+          default: {
+            var weapons
+
+            if (percentual <= 0.05) weapons = await Weapon.find(
+              {
+                stars: {
+                  $eq: 5
+                }
+              }
+            )
+            else if (percentual <= 1.05) weapons = await Weapon.find(
+              {
+                stars: {
+                  $eq: 4
+                }
+              }
+            )
+            else if (percentual <= 7) weapons = await Weapon.find(
+              {
+                stars: {
+                  $eq: 3
+                }
+              }
+            )
+            else if (percentual <= 39.95) weapons = await Weapon.find(
+              {
+                stars: {
+                  $eq: 2
+                }
+              }
+            )
+            else if (percentual <= 51.95) weapons = await Weapon.find(
+              {
+                stars: {
+                  $eq: 1
+                }
+              }
+            )
+            else weapons = await Weapon.find(
+              {
+                stars: {
+                  $eq: 1
+                }
+              }
+            )
+
+            var weapon = weapons[Math.floor(Math.random() * weapons.length)]
+            const locale = await import(`../../../../locales/${ctx.db.guild.locale}/weapons`)
+
+            var _weapon = locale.weapons[weapon.type!][weapon.name!]
+
+            ctx.reply('commands.get.congrats', {
+              weapon: `${_weapon.name} ${_weapon.type}`
+            })
+          }
+        }
       }
     }
   }

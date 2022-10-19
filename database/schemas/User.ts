@@ -13,6 +13,16 @@ const user = new Schema({
   dailyTime: {
     type: Number,
     default: 0
+  },
+  inventory: {
+    weapons: {
+      type: Array<Object>,
+      default: []
+    },
+    armors: {
+      type: Array<Object>,
+      default: []
+    }
   }
 })
 
