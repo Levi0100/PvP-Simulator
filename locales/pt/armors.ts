@@ -44,6 +44,12 @@ export const armors = {
       stars: 4,
       def: 6
     },
+    death: {
+      type: 'Morte',
+      name: 'Peitoral da',
+      stars: 4,
+      def: 6
+    },
     blood: {
       type: 'Sangue',
       name: 'Peitoral de',
