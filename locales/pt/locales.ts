@@ -19,7 +19,8 @@ export const commands = {
     congrats2: 'Parabéns, que sortudo! Você ganhou um bônus de {refinedGranex} Granex Refinado.'
   },
   get: {
-    congrats: 'A arma **{weapon}** acaba de chegar de forma gratuita para você!'
+    congrats: 'A arma **{weapon}** acaba de chegar de forma gratuita para você!',
+    congrats2: 'A peça de armadura **{armor}** acaba de chegar de forma gratuita para você!'
   }
 }
 

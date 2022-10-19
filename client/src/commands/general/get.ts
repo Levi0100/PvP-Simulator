@@ -1,4 +1,4 @@
-import { Weapon } from '../../../../database'
+import { Weapon, Armor } from '../../../../database'
 import { Command, CommandContext } from '../../structures'
 
 export default class GetCommand extends Command {
@@ -40,53 +40,105 @@ export default class GetCommand extends Command {
   async run (ctx: CommandContext) {
     const option = ctx.interaction.data.options![0]
 
-    var weapons
-    var armors
     var array = [
-      //'armor',
+      'armor',
       'weapon'
     ]
     var weaponOrArmor = array[Math.floor(Math.random() * array.length)]
     
     switch (option.name) {
       case 'normal': {
-        var percentual = Math.floor(Math.random() * 100) + 1
+        var percentual = Math.random() * 100
 
         switch (weaponOrArmor) {
           case 'armor': {
+            var armors
 
-          }
-          break
-          default: {
-            if (percentual <= 2) weapons = await Weapon.find(
+            if (percentual <= 0.05) armors = await Armor.find(
               {
                 stars: {
                   $eq: 5
                 }
               }
             )
-            else if (percentual <= 11) weapons = await Weapon.find(
+            else if (percentual <= 1.05) armors = await Armor.find(
               {
                 stars: {
                   $eq: 4
                 }
               }
             )
-            else if (percentual <= 16) weapons = await Weapon.find(
+            else if (percentual <= 7) armors = await Armor.find(
               {
                 stars: {
                   $eq: 3
                 }
               }
             )
-            else if (percentual <= 25) weapons = await Weapon.find(
+            else if (percentual <= 39.95) armors = await Armor.find(
               {
                 stars: {
                   $eq: 2
                 }
               }
             )
-            else if (percentual <= 46) weapons = await Weapon.find(
+            else if (percentual <= 51.95) armors = await Armor.find(
+              {
+                stars: {
+                  $eq: 1
+                }
+              }
+            )
+            else armors = await Armor.find(
+              {
+                stars: {
+                  $eq: 1
+                }
+              }
+            )
+
+            var armor = armors[Math.floor(Math.random() * armors.length)]
+            const locale = await import(`../../../../locales/${ctx.db.guild.locale}/weapons`)
+
+            var _armor = locale.weapons[armor.type!][armor.name!]
+
+            ctx.reply('commands.get.congrats2', {
+              weapon: `${_armor.name} ${_armor.type}`
+            })
+          }
+          break
+          default: {
+            var weapons
+
+            if (percentual <= 0.05) weapons = await Weapon.find(
+              {
+                stars: {
+                  $eq: 5
+                }
+              }
+            )
+            else if (percentual <= 1.05) weapons = await Weapon.find(
+              {
+                stars: {
+                  $eq: 4
+                }
+              }
+            )
+            else if (percentual <= 7) weapons = await Weapon.find(
+              {
+                stars: {
+                  $eq: 3
+                }
+              }
+            )
+            else if (percentual <= 39.95) weapons = await Weapon.find(
+              {
+                stars: {
+                  $eq: 2
+                }
+              }
+            )
+            else if (percentual <= 51.95) weapons = await Weapon.find(
               {
                 stars: {
                   $eq: 1
@@ -100,13 +152,6 @@ export default class GetCommand extends Command {
                 }
               }
             )
-
-            if (percentual <= 2) console.log('Arma 5 estrelas')
-            else if (percentual <= 11) console.log('Arma 4 estrelas')
-            else if (percentual <= 16) console.log('Arma 3 estrelas')
-            else if (percentual <= 25) console.log('Arma 2 estrelas')
-            else if (percentual <= 46) console.log('Arma 1 estrelas')
-            else console.log('.')
 
             var weapon = weapons[Math.floor(Math.random() * weapons.length)]
             const locale = await import(`../../../../locales/${ctx.db.guild.locale}/weapons`)
