@@ -103,7 +103,7 @@ export default class GetCommand extends Command {
             var _armor = locale.armors[armor.type!][armor.name!]
 
             ctx.reply('commands.get.congrats2', {
-              weapon: `${_armor.name} ${_armor.type}`
+              armor: `${_armor.name} ${_armor.type}`
             })
           }
           break
