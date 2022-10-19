@@ -1,20 +1,20 @@
 export const armors = {
   helmet: {
     angels: {
-      name: 'Anjos',
-      type: 'Capacete dos',
+      type: 'Anjos',
+      name: 'Capacete dos',
       stars: 5,
       def: 8
     },
     dark: {
-      name: 'Sombras',
-      type: 'Capacate das',
+      type: 'Sombras',
+      name: 'Capacate das',
       stars: 4,
       def: 6
     },
     blood: {
-      name: 'Sangue',
-      type: 'Capacete de',
+      type: 'Sangue',
+      name: 'Capacete de',
       stars: 3,
       def: 5
     },
@@ -39,8 +39,8 @@ export const armors = {
       def: 8
     },
     dark: {
-      name: 'Sombras',
-      type: 'Peitoral das',
+      type: 'Sombras',
+      name: 'Peitoral das',
       stars: 4,
       def: 6
     },
