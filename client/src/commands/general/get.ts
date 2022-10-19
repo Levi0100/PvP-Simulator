@@ -230,35 +230,35 @@ export default class GetCommand extends Command {
           default: {
             var weapons
 
-            if (percentual <= 0.05) weapons = await Weapon.find(
+            if (percentual <= 2) weapons = await Weapon.find(
               {
                 stars: {
                   $eq: 5
                 }
               }
             )
-            else if (percentual <= 1.05) weapons = await Weapon.find(
+            else if (percentual <= 14) weapons = await Weapon.find(
               {
                 stars: {
                   $eq: 4
                 }
               }
             )
-            else if (percentual <= 7) weapons = await Weapon.find(
+            else if (percentual <= 19) weapons = await Weapon.find(
               {
                 stars: {
                   $eq: 3
                 }
               }
             )
-            else if (percentual <= 39.95) weapons = await Weapon.find(
+            else if (percentual <= 25) weapons = await Weapon.find(
               {
                 stars: {
                   $eq: 2
                 }
               }
             )
-            else if (percentual <= 51.95) weapons = await Weapon.find(
+            else if (percentual <= 40) weapons = await Weapon.find(
               {
                 stars: {
                   $eq: 1
