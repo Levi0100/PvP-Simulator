@@ -100,7 +100,7 @@ export default class GetCommand extends Command {
             var armor = armors[Math.floor(Math.random() * armors.length)]
             const locale = await import(`../../../../locales/${ctx.db.guild.locale}/armors`)
 
-            var _armor = locale.weapons[armor.type!][armor.name!]
+            var _armor = locale.armors[armor.type!][armor.name!]
 
             ctx.reply('commands.get.congrats2', {
               weapon: `${_armor.name} ${_armor.type}`
