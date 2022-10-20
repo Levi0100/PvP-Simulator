@@ -15,6 +15,19 @@ export const commands = {
     has_been_picked: 'You already picked your daily prize. Try again {time}',
     congrats: 'In the today\'s daily you received {granex} Granex!',
     congrats2: 'Congratulations, what a lucky guy you are! You received a bonus of {refinedGranex} Refined Granex.'
+  },
+  get: {
+    congrats: 'The weapon **{weapon}** has just arrived for free to you!',
+    congrats2: 'The armor piece **{armor}** has just arrived for free to you!',
+    you_dont_have_refined_granex: 'You need at least 1 Refined Granex to use this command.'
+  },
+  top: {
+    dont_have_more_pages: 'There are no more pages to show.',
+    embed: {
+      author: 'Page {page}',
+      title: 'Top users with more granex',
+      footer: 'Your position: #{pos}'
+    }
   }
 }
 

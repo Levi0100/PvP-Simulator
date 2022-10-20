@@ -22,6 +22,14 @@ export const commands = {
     congrats: 'A arma **{weapon}** acaba de chegar de forma gratuita para você!',
     congrats2: 'A peça de armadura **{armor}** acaba de chegar de forma gratuita para você!',
     you_dont_have_refined_granex: 'Você precisa de pelo menos 1 Granex Refinado para usar este comando.'
+  },
+  top: {
+    dont_have_more_pages: 'Não existem mais páginas de rank a serem mostradas.',
+    embed: {
+      author: 'Página {page}',
+      title: 'Top usuários com mais granex',
+      footer: 'Sua posição: #{pos}'
+    }
   }
 }
 
