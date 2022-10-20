@@ -92,6 +92,14 @@ class Embed {
     return this
   }
 
+  public setFooter (text: string, icon_url?: string) {
+    this.footer = {
+      text,
+      icon_url
+    }
+    return this
+  }
+
   public setColor (color: string) {
     this.color = parseInt(color.toUpperCase().replace('#', ''), 16)
     return this
