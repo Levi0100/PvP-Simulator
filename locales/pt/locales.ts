@@ -30,6 +30,10 @@ export const commands = {
       title: 'Top usuários com mais granex',
       footer: 'Sua posição: #{pos}'
     }
+  },
+  granex: {
+    reply: 'Você possui {granex} Granex e está em {pos}º lugar na posição de usuários com mais Granex.',
+    reply2: '{user} possui {granex} Granex e está em {pos}º lugar na posição de usuários com mais Granex.'
   }
 }
 
@@ -39,5 +43,6 @@ export const helper = {
     user: 'Você é fraco, lhe faltam as seguintes permissões para executar este comando: {permissions}',
     bot: 'Me faltam as seguintes permissões para que este comando possa funcionar: {permissions}'
   },
-  you_dont_have_data: 'Parece que você é novo por aqui... Que tal começar usando </start:1031733050041704518>?'
+  you_dont_have_data: 'Parece que você é novo por aqui... Que tal começar usando </start:1031733050041704518>?',
+  user_is_not_in_db: 'Este usuário ainda não criou seus dados através do comando </start:1031733050041704518>'
 }
