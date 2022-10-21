@@ -1,4 +1,4 @@
-import { Guild } from '../../../../database'
+import { User } from '../../../../database'
 import { Command, CommandContext } from '../../structures'
 
 interface CommandOptions {
@@ -16,7 +16,6 @@ export default class ConfigCommand extends Command {
       description_localizations: {
         'pt-BR': 'Me configure para que eu funcione direito'
       },
-      permissions: ['manageGuild'],
       options: [
         {
           type: 1,
@@ -24,9 +23,9 @@ export default class ConfigCommand extends Command {
           name_localizations: {
             'pt-BR': 'idioma'
           },
-          description: 'Change the language that I interact on this server',
+          description: 'Change the language that I interact with you',
           description_localizations: {
-            'pt-BR': 'Altere o idioma que eu interajo no servidor'
+            'pt-BR': 'Altere o idioma que eu interajo com você'
           },
           options: [
             {
@@ -59,21 +58,21 @@ export default class ConfigCommand extends Command {
   }
 
   async run (ctx: CommandContext) {
-    const guild = await Guild.findById(ctx.guild.id) || new Guild({
-      _id: ctx.guild.id
+    const user = await User.findById(ctx.interaction.member?.id) || new User({
+      _id: ctx.interaction.member?.id
     })
     const option = ctx.interaction.data.options?.find(index => index) as CommandOptions
     const { options } = ctx.interaction.data.options?.find(index => index) as CommandOptions
     
     switch (option.name) {
       case 'language': {
-        guild.locale = options[0].value
-        guild.save()
+        user.locale = options[0].value
+        user.save()
 
         switch (options[0].value) {
-          case 'pt': ctx.reply('Agora eu irei falar em português neste servidor. Aqui é o Brasil!')
+          case 'pt': ctx.reply('Agora eu irei falar em português com você. Aqui é o Brasil!')
           break
-          case 'en': ctx.reply('Now I will speak in english on this server. This is America!')
+          case 'en': ctx.reply('Now I will speak in english with you. This is America!')
         }
       }
     }
