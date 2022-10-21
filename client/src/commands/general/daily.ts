@@ -30,7 +30,7 @@ export default class DailyCommand extends Command {
     
     var percentual = Math.random() * 100
 
-    if (percentual <= 0.05) {
+    if (percentual <= 5) {
       var refinedGranex = Math.floor(Math.random() * (9 - 2) + 2)
 
       ctx.db.user.refinedGranex += refinedGranex
