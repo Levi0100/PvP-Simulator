@@ -21,7 +21,8 @@ export const commands = {
   get: {
     congrats: 'A arma **{weapon}** acaba de chegar de forma gratuita para você!',
     congrats2: 'A peça de armadura **{armor}** acaba de chegar de forma gratuita para você!',
-    you_dont_have_refined_granex: 'Você precisa de pelo menos 1 Granex Refinado para usar este comando.'
+    you_dont_have_refined_granex: 'Você precisa de pelo menos 1 Granex Refinado para usar este comando.',
+    has_been_picked: 'Você já coletou um item recentemente. Tente novamente {time}'
   },
   top: {
     dont_have_more_pages: 'Não existem mais páginas de rank a serem mostradas.',
@@ -32,8 +33,8 @@ export const commands = {
     }
   },
   granex: {
-    reply: 'Você possui {granex} Granex e está em {pos}º lugar na posição de usuários com mais Granex.',
-    reply2: '{user} possui {granex} Granex e está em {pos}º lugar na posição de usuários com mais Granex.'
+    reply: 'Você possui {granex} Granex e está em {pos}º lugar na posição de usuários com mais Granex.\nVocê também possui {refinedGranex} Granex Refinado.',
+    reply2: '{user} possui {granex} Granex e está em {pos}º lugar na posição de usuários com mais Granex.\n{user} também possui {refinedGranex} Granex Refinado.'
   }
 }
 

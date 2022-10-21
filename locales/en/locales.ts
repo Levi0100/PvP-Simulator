@@ -4,7 +4,8 @@ export const commands = {
   },
   help: {
     embed: {
-      title: 'My Commands'
+      title: 'My Commands',
+      description: 'Need Help? Join my Community & Support server for your questions by clicking the button below!'
     }
   },
   start: {
@@ -19,7 +20,8 @@ export const commands = {
   get: {
     congrats: 'The weapon **{weapon}** has just arrived for free to you!',
     congrats2: 'The armor piece **{armor}** has just arrived for free to you!',
-    you_dont_have_refined_granex: 'You need at least 1 Refined Granex to use this command.'
+    you_dont_have_refined_granex: 'You need at least 1 Refined Granex to use this command.',
+    has_been_picked: 'You already collected a item recently. Try again {time}'
   },
   top: {
     dont_have_more_pages: 'There are no more pages to show.',
@@ -30,8 +32,8 @@ export const commands = {
     }
   },
   granex: {
-    reply: 'You have {granex} Granex and you are in #{pos} in the position of users with more Granex.',
-    reply2: '{user} has {granex} Granex and is in #{pos} in the position of users with more Granex.'
+    reply: 'You have {granex} Granex and you are in #{pos} in the position of users with more Granex.\nAlso you have {refinedGranex} Refined Granex.',
+    reply2: '{user} has {granex} Granex and is in #{pos} in the position of users with more Granex.\nAlso {user} has {refinedGranex} Refined Granex.'
   }
 }
 
