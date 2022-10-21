@@ -2,6 +2,10 @@ import { Schema, model } from 'mongoose'
 
 const user = new Schema({
   _id: String,
+  locale: {
+    type: String,
+    default: 'en'
+  },
   granex: {
     type: Number,
     default: 0
@@ -16,13 +20,17 @@ const user = new Schema({
   },
   inventory: {
     weapons: {
-      type: Array<Object>,
+      type: Array,
       default: []
     },
     armors: {
-      type: Array<Object>,
+      type: Array,
       default: []
     }
+  },
+  getTime: {
+    type: Number,
+    default: 0
   }
 })
 
