@@ -56,7 +56,8 @@ export default class GranexCommand extends Command {
     ctx.reply(user?.id == ctx.interaction.member?.id ? 'commands.granex.reply' : 'commands.granex.reply2', {
       user: _user?.mention,
       pos,
-      granex: user.granex.toLocaleString()
+      granex: user.granex.toLocaleString(),
+      refinedGranex: user.refinedGranex
     })
   }
 }
