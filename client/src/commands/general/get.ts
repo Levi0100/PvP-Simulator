@@ -41,6 +41,10 @@ export default class GetCommand extends Command {
     const user = await User.findById(ctx.interaction.member?.id)
     const option = ctx.interaction.data.options![0]
 
+    if (ctx.db.user.getTime > Date.now()) return ctx.reply('commands.get.has_been_picked', {
+      time: `<t:${parseInt(((ctx.db.user.getTime) / 1000).toString())}:R>`
+    })
+
     var array = [
       'armor',
       'weapon'
@@ -99,9 +103,20 @@ export default class GetCommand extends Command {
             )
 
             var armor = armors[Math.floor(Math.random() * armors.length)]
-            const locale = await import(`../../../../locales/${ctx.db.guild.locale}/armors`)
+            const locale = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
 
             var _armor = locale.armors[armor.type!][armor.name!]
+
+            user?.inventory?.armors.push(
+              {
+                name: armor.name,
+                type: armor.type,
+                stars: armor.stars,
+                def: armor.def
+              }
+            )
+            user!.getTime = Date.now() + 420000
+            user?.save()
 
             ctx.reply('commands.get.congrats2', {
               armor: `${_armor.name} ${_armor.type}`
@@ -155,9 +170,20 @@ export default class GetCommand extends Command {
             )
 
             var weapon = weapons[Math.floor(Math.random() * weapons.length)]
-            const locale = await import(`../../../../locales/${ctx.db.guild.locale}/weapons`)
+            const locale = await import(`../../../../locales/${ctx.db.user.locale}/weapons`)
 
             var _weapon = locale.weapons[weapon.type!][weapon.name!]
+
+            user?.inventory?.weapons.push(
+              {
+                name: weapon.name,
+                type: weapon.type,
+                stars: weapon.stars,
+                damage: weapon.damage
+              }
+            )
+            user!.getTime = Date.now() + 420000
+            user?.save()
 
             ctx.reply('commands.get.congrats', {
               weapon: `${_weapon.name} ${_weapon.type}`
@@ -169,6 +195,8 @@ export default class GetCommand extends Command {
       case 'refined': {
         if (!user?.refinedGranex) return ctx.reply('commands.get.you_dont_have_refined_granex')
         var percentual = Math.random() * 100
+
+        user.refinedGranex -= 1
 
         switch (weaponOrArmor) {
           case 'armor': {
@@ -218,9 +246,20 @@ export default class GetCommand extends Command {
             )
 
             var armor = armors[Math.floor(Math.random() * armors.length)]
-            const locale = await import(`../../../../locales/${ctx.db.guild.locale}/armors`)
+            const locale = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
 
             var _armor = locale.armors[armor.type!][armor.name!]
+
+            user?.inventory?.armors.push(
+              {
+                name: armor.name,
+                type: armor.type,
+                stars: armor.stars,
+                def: armor.def
+              }
+            )
+            user.getTime = Date.now() + 420000
+            user?.save()
 
             ctx.reply('commands.get.congrats2', {
               armor: `${_armor.name} ${_armor.type}`
@@ -274,9 +313,20 @@ export default class GetCommand extends Command {
             )
 
             var weapon = weapons[Math.floor(Math.random() * weapons.length)]
-            const locale = await import(`../../../../locales/${ctx.db.guild.locale}/weapons`)
+            const locale = await import(`../../../../locales/${ctx.db.user.locale}/weapons`)
 
             var _weapon = locale.weapons[weapon.type!][weapon.name!]
+
+            user?.inventory?.weapons.push(
+              {
+                name: weapon.name,
+                type: weapon.type,
+                stars: weapon.stars,
+                damage: weapon.damage
+              }
+            )
+            user.getTime = Date.now() + 420000
+            user?.save()
 
             ctx.reply('commands.get.congrats', {
               weapon: `${_weapon.name} ${_weapon.type}`
