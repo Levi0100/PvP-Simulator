@@ -1,6 +1,6 @@
 import App from '../client/App'
 import Eris, { CommandInteraction } from 'eris'
-import { Guild, User } from '../../../../database'
+import { User } from '../../../../database'
 import CommandContext from './CommandContext'
 import { get } from '../../../../locales'
 
@@ -19,11 +19,9 @@ export default class CommandRunner {
     if (!this.interaction.member) return
 
     const permissions = await import(`../../../../locales/${this.locale}/permissions`)
-    const guild = await Guild.findById(this.interaction.guildID)
     const user = await User.findById(this.interaction.member.id)
     const db = {
-      user,
-      guild
+      user
     }
     const g = this.client.guilds.get(this.interaction.guildID!) as Eris.Guild
     const ctx = new CommandContext(this.client, db, g, this.interaction, this.locale)

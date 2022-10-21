@@ -1,6 +1,6 @@
 import { App, CommandRunner, Listener } from '../../structures'
 import { CommandInteraction } from 'eris'
-import { Guild } from '../../../../database'
+import { User } from '../../../../database'
 
 export default class InteractionCreateListener extends Listener {
   constructor (client: App) {
@@ -13,12 +13,10 @@ export default class InteractionCreateListener extends Listener {
   async on (interaction: CommandInteraction) {
     if (!interaction.member) return
 
-    const guild = await Guild.findById(interaction.guildID) || new Guild({
-      _id: interaction.guildID
+    const user = await User.findById(interaction.member.id) || new User({
+      _id: interaction.member.id
     })
 
-    new CommandRunner(this.client!, interaction, guild.locale).init()
-
-    guild.save()
+    new CommandRunner(this.client!, interaction, user.locale).init()
   }
 }
