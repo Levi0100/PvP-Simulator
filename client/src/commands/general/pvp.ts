@@ -138,7 +138,7 @@ export default class PvPCommand extends Command {
           await i.defer()
           i.createMessage(await this.locale.get('commands.pvp.starting'))
 
-          new Battle(ctx, ctx.interaction.member!, _user!, this.locale).init()
+          new Battle(ctx, ctx.interaction.member!, _user!, this.locale, value).init()
         }
 
         this.client?.on('interactionCreate', collector)
