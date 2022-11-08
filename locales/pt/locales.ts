@@ -35,6 +35,28 @@ export const commands = {
   granex: {
     reply: 'Você possui {granex} Granex e está em {pos}º lugar na posição de usuários com mais Granex.\nVocê também possui {refinedGranex} Granex Refinado.',
     reply2: '{user} possui {granex} Granex e está em {pos}º lugar na posição de usuários com mais Granex.\n{user} também possui {refinedGranex} Granex Refinado.'
+  },
+  equip: {
+    dont_have_this: 'Você não possui este item em seu inventário. Verifique seu inventário e tente novamente.',
+    equiped: 'Você equipou **{item}** com sucesso!'
+  },
+  inventory: {
+    embed: {
+      title: 'Seu Inventário',
+      footer: 'Filtro: {filter}',
+      field: 'Posição: {pos}\nDefesa: {def}\nEstrelas: {stars}'
+    },
+    empty: 'Vazio... igual a conta bancária do meu criador.'
+  },
+  pvp: {
+    needs_weapon: 'Você precisa equipar uma arma para poder iniciar uma partida PvP.',
+    needs_weapon2: '{user} precisa equipar uma arma primeiro.',
+    request: '{user} {author} quer iniciar uma partida de PvP apostada com você valendo {value} granex. E aí, vai encarar?',
+    button: {
+      label: 'Aceitar'
+    },
+    tried_attack: '{author} atacou {user}',
+    starting: 'Iniciando a partida.'
   }
 }
 
@@ -45,5 +67,7 @@ export const helper = {
     bot: 'Me faltam as seguintes permissões para que este comando possa funcionar: {permissions}'
   },
   you_dont_have_data: 'Parece que você é novo por aqui... Que tal começar usando </start:1031733050041704518>?',
-  user_is_not_in_db: 'Este usuário ainda não criou seus dados através do comando </start:1031733050041704518>'
+  user_is_not_in_db: 'Este usuário ainda não criou seus dados através do comando </start:1031733050041704518>',
+  dont_have_granex: 'Você não possui essa quantidade de granex. Consulte seu saldo com </granex:1032759218232627322> e tente novamente.',
+  dont_have_granex2: '{user} não possui essa quantidade de granex.'
 }
