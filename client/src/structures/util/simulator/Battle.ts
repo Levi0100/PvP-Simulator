@@ -21,6 +21,8 @@ export default class Battle {
   }
 
   private async initBattle () {
+    if (this.finished) return
+    
     var arrayPlayers = [
       this.author,
       this.user
