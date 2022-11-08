@@ -28,7 +28,7 @@ export default class Battle {
     arrayPlayers.splice(arrayPlayers.indexOf(user1), 1)
     var user2 = arrayPlayers[0]
 
-    this.ctx.reply('commands.pvp.tried_attack', {
+    this.ctx.reply('commands.pvp.attack', {
       user: user2.mention,
       author: user1.mention
     })
