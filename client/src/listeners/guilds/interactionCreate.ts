@@ -12,6 +12,7 @@ export default class InteractionCreateListener extends Listener {
 
   async on (interaction: CommandInteraction) {
     if (!interaction.member) return
+    if (!interaction.data.name) return
 
     const user = await User.findById(interaction.member.id) || new User({
       _id: interaction.member.id
