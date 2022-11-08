@@ -39,7 +39,11 @@ const user = new Schema({
     type: Number,
     default: 0
   },
-  battling: Boolean
+  battling: Boolean,
+  energy: {
+    type: Number,
+    default: 0
+  }
 })
 
 export default model('users', user)
