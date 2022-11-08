@@ -55,7 +55,7 @@ export const commands = {
     button: {
       label: 'Aceitar'
     },
-    tried_attack: '{author} atacou {user}',
+    attack: '{author} atacou {user}',
     starting: 'Iniciando a partida.'
   }
 }
