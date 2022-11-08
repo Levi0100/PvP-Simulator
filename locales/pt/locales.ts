@@ -55,7 +55,7 @@ export const commands = {
     button: {
       label: 'Aceitar'
     },
-    attack: '{author} atacou {user}',
+    attack: '{author} atacou {user} e fez um dano de {damage}\n{user} agora tem {energy} energia',
     starting: 'Iniciando a partida.'
   }
 }
