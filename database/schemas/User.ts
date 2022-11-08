@@ -42,7 +42,7 @@ const user = new Schema({
   battling: Boolean,
   energy: {
     type: Number,
-    default: 0
+    default: 1000
   }
 })
 
