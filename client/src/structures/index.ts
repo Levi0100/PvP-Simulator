@@ -5,6 +5,8 @@ import CommandRunner from './command/CommandRunner'
 import Listener from './client/Listener'
 import Logger from './util/Logger'
 import Embed from './embed/Embed'
+import Button from './components/Button'
+import Battle from './util/simulator/Battle'
 
 export {
   App,
@@ -14,5 +16,7 @@ export {
   CommandRunner,
   Listener,
   Logger,
-  Embed
+  Embed,
+  Button,
+  Battle
 }

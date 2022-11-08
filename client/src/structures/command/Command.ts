@@ -1,5 +1,25 @@
 import { App } from '..'
 
+interface SubCommandOptions {
+  type: number
+  name: string
+  name_localizations?: {
+    'pt-BR': string
+  }
+  description: string
+  description_localizations?: {
+    'pt-BR': string
+  }
+  choices?: Array<{
+    name: string
+    name_localizations?: {
+      'pt-BR': string
+    }
+    value: string
+  }>
+  required?: boolean
+}
+
 interface Option {
   type: number
   name: string
@@ -12,9 +32,13 @@ interface Option {
   }
   choices?: Array<{
     name: string
+    name_localizations?: {
+      'pt-BR': string
+    }
     value: string
   }>
   required?: boolean
+  options?: SubCommandOptions[]
 }
 
 interface ICommandOption {
@@ -27,6 +51,13 @@ interface ICommandOption {
   description_localizations?: {
     'pt-BR': string
   }
+  choices?: Array<{
+    name: string
+    name_localizations?: {
+      'pt-BR': string
+    }
+    value: string
+  }>
   required?: boolean
   options?: Option[]
 }

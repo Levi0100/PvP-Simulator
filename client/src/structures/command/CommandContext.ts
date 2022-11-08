@@ -23,7 +23,7 @@ export default class CommandContext {
         if (options?.name && options?.file) {
           return this.interaction.createMessage(
             {
-              content: await get(this.locale, content, options)
+              content: await get(this.locale, content ?? content, options)
             },
             {
               file: options?.file,
