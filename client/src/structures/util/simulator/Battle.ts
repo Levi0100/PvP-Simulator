@@ -39,7 +39,7 @@ export default class Battle {
     if (p2?.inUse?.chest) damage -= p2?.inUse?.chest.def
     if (p2?.inUse?.helmet) damage -= p2?.inUse?.helmet.def
     if (p2?.inUse?.pants) damage -= p2?.inUse?.pants.def
-    if (damage > 0) damage = 0
+    if (damage < 0) damage = 0
 
     p2!.energy -= damage
 
