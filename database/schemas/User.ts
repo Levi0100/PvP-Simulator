@@ -28,10 +28,18 @@ const user = new Schema({
       default: []
     }
   },
+  inUse: {
+    helmet: Object,
+    chest: Object,
+    pants: Object,
+    boots: Object,
+    weapon: Object
+  },
   getTime: {
     type: Number,
     default: 0
-  }
+  },
+  battling: Boolean
 })
 
 export default model('users', user)
