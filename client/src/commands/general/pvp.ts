@@ -105,6 +105,7 @@ export default class PvPCommand extends Command {
     if (!rival) return ctx.reply('helper.user_is_not_in_db')
     if (!user?.inUse?.weapon) return ctx.reply('commands.pvp.needs_weapon')
     if (user.energy < 1) return ctx.reply('commands.pvp.energy_not_enough')
+    if (rival.energy < 1) return ctx.reply('commands.pvp.energy_not_enough2')
     if (!rival?.inUse?.weapon) return ctx.reply('commands.pvp.needs_weapon2', {
       user: _user?.mention
     })

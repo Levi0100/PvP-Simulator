@@ -34,6 +34,32 @@ export const commands = {
   granex: {
     reply: 'You have {granex} Granex and you are in #{pos} in the position of users with more Granex.\nAlso you have {refinedGranex} Refined Granex.',
     reply2: '{user} has {granex} Granex and is in #{pos} in the position of users with more Granex.\nAlso {user} has {refinedGranex} Refined Granex.'
+  },
+  equip: {
+    dont_have_this: 'You don\'t have this item in your inventory. Verify your inventory and try again.',
+    equiped: 'You was equip **{item}** successfully!'
+  },
+  inventory: {
+    embed: {
+      title: 'Your inventory',
+      footer: 'Filtro: {filter}',
+      field: 'Position: {pos}\nDefense: {def}\nStars: {stars}',
+      field2: 'Position: {pos}\nDamage: {damage}\nStars: {stars}'
+    },
+    empty: 'Empty... like my creator\'s bank account.'
+  },
+  pvp: {
+    needs_weapon: 'You need equip a weapon to start a PvP match.',
+    needs_weapon2: '{user} needs equip a weapon first.',
+    request: '{user} {author} wants start a bet PvP match with you worth {granex} granex. So, are you in?',
+    button: {
+      label: 'Accept'
+    },
+    attack: '{author} attacked {user} and did a damage of {damage}\n{user} now has {energy} energy',
+    starting: 'Starting the match.',
+    winner: '{winner} was the big winner of this match.\n**Bet award:** {value} granex',
+    energy_not_enough: 'You don\'t have enough energy to start a PvP match.',
+    energy_not_enough2: '{user} doesn\'t have enough energy to start a PvP match.'
   }
 }
 

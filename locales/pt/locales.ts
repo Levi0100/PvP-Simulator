@@ -44,7 +44,8 @@ export const commands = {
     embed: {
       title: 'Seu Inventário',
       footer: 'Filtro: {filter}',
-      field: 'Posição: {pos}\nDefesa: {def}\nEstrelas: {stars}'
+      field: 'Posição: {pos}\nDefesa: {def}\nEstrelas: {stars}',
+      field2: 'Posição: {pos}\nDano: {damage}\nEstrelas: {stars}'
     },
     empty: 'Vazio... igual a conta bancária do meu criador.'
   },
@@ -58,7 +59,8 @@ export const commands = {
     attack: '{author} atacou {user} e fez um dano de {damage}\n{user} agora tem {energy} energia',
     starting: 'Iniciando a partida.',
     winner: '{winner} foi o grande vencedor da rodada.\n**Prêmio da aposta:** {value} granex',
-    energy_not_enough: 'Você não possui energia suficiente para batalhar.'
+    energy_not_enough: 'Você não possui energia suficiente para uma partida PvP.',
+    energy_not_enough2: '{user} não possui energia suficiente para iniciar uma partida PvP.'
   }
 }
 
