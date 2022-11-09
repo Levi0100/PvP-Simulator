@@ -57,7 +57,8 @@ export const commands = {
     },
     attack: '{author} atacou {user} e fez um dano de {damage}\n{user} agora tem {energy} energia',
     starting: 'Iniciando a partida.',
-    winner: '{winner} foi o grande vencedor da rodada.\n**Prêmio da aposta:** {value} granex'
+    winner: '{winner} foi o grande vencedor da rodada.\n**Prêmio da aposta:** {value} granex',
+    energy_not_enough: 'Você não possui energia suficiente para batalhar.'
   }
 }
 
