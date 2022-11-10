@@ -1,5 +1,5 @@
 import App from '../client/App'
-import { Guild, CommandInteraction, AdvancedMessageContent } from 'eris'
+import { Guild, CommandInteraction, AdvancedMessageContent, InteractionContentEdit } from 'eris'
 import { get } from '../../../../locales'
 
 export default class CommandContext {
@@ -47,49 +47,6 @@ export default class CommandContext {
           )
         }
         else return this.interaction.createMessage(Object.assign(content))
-      }
-    }
-  }
-
-  async edit(content: string | AdvancedMessageContent, options?: object | any) {
-    switch (typeof content) {
-      case 'string': {
-        if (options?.name && options?.file) {
-          return this.interaction.editOriginalMessage(
-            {
-              content: await get(this.locale, content, options)
-            },
-            {
-              file: options?.file,
-              name: options?.name
-            }
-          )
-        }
-        else return this.interaction.editOriginalMessage(
-          {
-            content: await get(this.locale, content, options)
-          }
-        )
-      }
-      case 'object': {
-        if (options?.file && options?.name) {
-          return this.interaction.editOriginalMessage(Object.assign(content),
-            {
-              file: options?.file,
-              name: options?.name
-            }
-          )
-        }
-        else if (content.content && options.file) return this.interaction.editOriginalMessage(
-          {
-            content: await get(this.locale, content.content, options)
-          },
-          {
-            file: options.file,
-            name: options.name
-          }
-        )
-        else return this.interaction.editOriginalMessage(Object.assign(content))
       }
     }
   }
