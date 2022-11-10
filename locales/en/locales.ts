@@ -59,7 +59,10 @@ export const commands = {
     starting: 'Starting the match.',
     winner: '{winner} was the big winner of this match.\n**Bet award:** {value} granex',
     energy_not_enough: 'You don\'t have enough energy to start a PvP match.',
-    energy_not_enough2: '{user} doesn\'t have enough energy to start a PvP match.'
+    energy_not_enough2: '{user} doesn\'t have enough energy to start a PvP match.',
+    winner2: '{winner} was the big winner of this match.',
+    request2: '{user} {author} wants start a normal PvP match with you. So, are you in?',
+    already_in_match: 'You are already in a PvP match. Wait until it finishes and try again later.'
   }
 }
 

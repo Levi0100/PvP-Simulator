@@ -60,7 +60,10 @@ export const commands = {
     starting: 'Iniciando a partida.',
     winner: '{winner} foi o grande vencedor da rodada.\n**Prêmio da aposta:** {value} granex',
     energy_not_enough: 'Você não possui energia suficiente para uma partida PvP.',
-    energy_not_enough2: '{user} não possui energia suficiente para iniciar uma partida PvP.'
+    energy_not_enough2: '{user} não possui energia suficiente para iniciar uma partida PvP.',
+    winner2: '{winner} foi o grande vencedor da rodada.',
+    request2: '{user} {author} quer iniciar uma partida de PvP normal com você. E aí, vai encarar?',
+    already_in_match: 'Você já está em uma partida de PvP. Aguarde até o término da mesma e tente novamente mais tarde.'
   }
 }
 

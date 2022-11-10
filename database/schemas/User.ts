@@ -43,7 +43,8 @@ const user = new Schema({
   energy: {
     type: Number,
     default: 1000
-  }
+  },
+  inMatch: Boolean
 })
 
 export default model('users', user)

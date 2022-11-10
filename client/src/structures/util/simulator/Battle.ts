@@ -8,14 +8,16 @@ export default class Battle {
   user: Eris.User
   locale: any
   finished?: boolean
-  value: number
+  value?: number
+  bet?: boolean
 
-  public constructor (ctx: CommandContext, author: Member, user: Eris.User, locale: any, value: number) {
+  public constructor (ctx: CommandContext, author: Member, user: Eris.User, locale: any, value?: number) {
     this.ctx = ctx
     this.author = author
     this.user = user
     this.locale = locale
     this.value = value
+    if (this.value) this.bet = true
   }
 
   public init () {
@@ -65,23 +67,45 @@ export default class Battle {
     const p1 = await User.findById(user1.id)
     const p2 = await User.findById(user2.id)
 
-    if (p1!.energy <= 0) {
-      p2!.granex += this.value
-      p1!.granex -= this.value
-
-      this.ctx.reply('commands.pvp.winner', {
-        winner: user2.mention,
-        value: this.value.toLocaleString()
-      })
+    switch (this.bet) {
+      case true: {
+        if (p1!.energy <= 0) {
+          p2!.granex += this.value!
+          p1!.granex -= this.value!
+    
+          this.ctx.reply('commands.pvp.winner', {
+            winner: user2.mention,
+            value: this.value?.toLocaleString()
+          })
+        }
+        else if (p2!.energy <= 0) {
+          p2!.granex -= this.value!
+          p1!.granex += this.value!
+    
+          this.ctx.reply('commands.pvp.winner', {
+            winner: user1.mention,
+            value: this.value?.toLocaleString()
+          })
+        }
+      }
+      break
+      default: {
+        if (p1!.energy <= 0) {
+          this.ctx.reply('commands.pvp.winner2', {
+            winner: user2.mention
+          })
+        }
+        else if (p2!.energy <= 0) {
+          this.ctx.reply('commands.pvp.winner2', {
+            winner: user1.mention
+          })
+        }
+      }
     }
-    else if (p2!.energy <= 0) {
-      p2!.granex -= this.value
-      p1!.granex += this.value
 
-      this.ctx.reply('commands.pvp.winner', {
-        winner: user1.mention,
-        value: this.value.toLocaleString()
-      })
-    }
+    p2!.inMatch = false
+    p1!.inMatch = false
+    p2?.save()
+    p1?.save()
   }
 }
