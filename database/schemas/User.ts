@@ -44,7 +44,8 @@ const user = new Schema({
     type: Number,
     default: 1000
   },
-  inMatch: Boolean
+  inMatch: Boolean,
+  background: String
 })
 
 export default model('users', user)
