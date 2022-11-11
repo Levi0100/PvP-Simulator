@@ -21,10 +21,6 @@ export default class Battle {
     if (this.value) this.bet = true
   }
 
-  public init () {
-    setInterval (() => { this.initBattle() }, 10000)
-  }
-
   public async initBattle () {
     if (this.finished) return
     
@@ -43,7 +39,7 @@ export default class Battle {
     if (p2!.energy < 0) {
       p2!.energy = 0
       this.finished = true
-      this.checkWinner(this.user1 as Member, this.user2 as Eris.User)
+      return this.checkWinner(this.user1 as Member, this.user2 as Eris.User)
     }
 
     this.ctx.edit({
@@ -94,10 +90,8 @@ export default class Battle {
       .setLabel(await this.locale.get('commands.pvp.button.attack'))
       .setCustomId('attack6')
       .setDisabled()
-      
-      var n = Math.floor(Math.random() * 6) + 1
-      console.log(n)
-      switch (n) {
+  
+      switch (Math.floor(Math.random() * 6) + 1) {
         case 1: {
           a1.setEnabled()
           a1.forceCustomId('attack')

@@ -132,8 +132,8 @@ export default class PvPCommand extends Command {
         })))
 
         const collector = async (i: ComponentInteraction): Promise<void> => {
-          if (i.channel.id !== msg.channel.id) return console.log('a')
-          if (i.message.id !== msg.id) return console.log('b')
+          if (i.channel.id !== msg.channel.id) return
+          if (i.message.id !== msg.id) return
 
           console.log(i.data.custom_id)
 
@@ -156,8 +156,8 @@ export default class PvPCommand extends Command {
                 components: []
               })
               
-              //rival.inMatch = true
-              //user.inMatch = true
+              rival.inMatch = true
+              user.inMatch = true
               rival.save()
               user.save()
 
@@ -201,31 +201,56 @@ export default class PvPCommand extends Command {
         })))
 
         const collector = async (i: ComponentInteraction): Promise<void> => {
-          if (i.data.custom_id !== 'accept-pvp') return
           if (i.channel.id !== msg.channel.id) return
-          if (i.member?.id !== _user?.id) return
-          if (!rival?.inUse?.weapon) {
-            await i.defer()
-            return i.createMessage(await this.locale.get('commands.pvp.needs_weapon'))
+          if (i.message.id !== msg.id) return
+
+          switch (i.data.custom_id) {
+            case 'accept-pvp': {
+              if (i.member?.id !== _user?.id) return
+              if (!rival?.inUse?.weapon) {
+                await i.defer(64)
+                return i.createMessage(await this.locale.get('commands.pvp.needs_weapon'))
+              }
+              if (rival.inMatch) {
+                await i.defer(64)
+                return i.createMessage(await this.locale.get('commands.pvp.already_in_match'))
+              }
+
+              await i.deferUpdate()
+    
+              ctx.edit({
+                content: await this.locale.get('commands.pvp.starting'),
+                components: []
+              })
+              
+              rival.inMatch = true
+              user.inMatch = true
+              rival.save()
+              user.save()
+
+              const attack = new Button()
+              .setStyle('DANGER')
+              .setLabel(await this.locale.get('commands.pvp.button.attack'))
+              .setCustomId('attack')
+
+              setTimeout(async () => {
+                ctx.edit({
+                  content: '',
+                  components: [{
+                    type: 1,
+                    components: [attack]
+                  }]
+                })
+              }, 10000)
+            }
+            break
+            case 'attack': {
+              if (![rival.id, user.id].includes(i.member?.id)) return
+              await i.deferUpdate()
+              if (i.member?.id === ctx.interaction.member?.id) new Battle(ctx, ctx.interaction.member!, _user!, this.locale).initBattle()
+              else new Battle(ctx, _user!, ctx.interaction.member!, this.locale).initBattle()
+            }
           }
-          if (rival.inMatch) {
-            await i.defer(64)
-            return i.createMessage(await this.locale.get('commands.pvp.already_in_match'))
-          }
-
-          await i.deferUpdate()
-
-          ctx.edit({
-            content: await this.locale.get('commands.pvp.starting'),
-            components: []
-          })
-
-          new Battle(ctx, ctx.interaction.member!, _user!, this.locale, value).init()
-
-          rival.inMatch = true
-          user.inMatch = true
-          rival.save()
-          user.save()
         }
 
         this.client?.on('interactionCreate', collector)
