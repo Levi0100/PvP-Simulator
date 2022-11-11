@@ -34,13 +34,14 @@ export default class Battle {
     if (p2?.inUse?.pants) damage -= p2?.inUse?.pants.def
     if (damage < 0) damage = 0
 
-    p2!.energy -= damage
-
     if (p2!.energy <= 0) {
       p2!.energy = 0
       this.finished = true
       return this.checkWinner(this.user1 as Member, this.user2 as Eris.User)
     }
+
+    p2!.energy -= damage
+    if (p2!.energy < 0) p2!.energy = 0
 
     this.ctx.edit({
       content: await this.locale.get('commands.pvp.attack', {

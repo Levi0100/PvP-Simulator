@@ -135,8 +135,6 @@ export default class PvPCommand extends Command {
           if (i.channel.id !== msg.channel.id) return
           if (i.message?.id !== msg.id) return
 
-          console.log(i.data.custom_id)
-
           switch (i.data.custom_id) {
             case 'accept-pvp': {
               if (i.member?.id !== _user?.id) return
