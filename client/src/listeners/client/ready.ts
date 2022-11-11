@@ -1,3 +1,4 @@
+import { User } from '../../../../database'
 import { App, Listener, Logger } from '../../structures'
 
 export default class ReadyListener extends Listener {
@@ -22,5 +23,19 @@ export default class ReadyListener extends Listener {
       })
     })
     this.client?.bulkEditCommands(commands)
+
+    const removeUserFromMatch = async (): Promise<void> => {
+      const users = await User.find({
+        inMatch: {
+          $eq: true
+        }
+      })
+
+      for (const user of users) {
+        user.inMatch = false
+        user.save()
+      }
+    }
+    removeUserFromMatch()
   }
 }
