@@ -21,7 +21,7 @@ export default class DailyCommand extends Command {
     })
     
     var granex = Math.floor(Math.random() * (500 - 150) + 150)
-    ctx.db.user.dailyTime += new Date().setHours(24, 0, 0, 0)
+    ctx.db.user.dailyTime = new Date().setHours(24, 0, 0, 0)
     ctx.db.user.granex += granex
 
     ctx.reply('commands.daily.congrats', {
