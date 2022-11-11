@@ -187,7 +187,6 @@ export default class PvPCommand extends Command {
         }
 
         this.client?.on('interactionCreate', collector)
-        setTimeout(() => this.client?.removeListener('interactionCreate', collector), 1000 * 30)
       }
       break
       case 'normal': {
