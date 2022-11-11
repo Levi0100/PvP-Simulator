@@ -71,7 +71,9 @@ export default class Battle {
       case true: {
         if (p1!.energy <= 0) {
           p2!.granex += this.value!
+          p2!.wins += 1
           p1!.granex -= this.value!
+          p1!.defeats += 1
     
           this.ctx.reply('commands.pvp.winner', {
             winner: user2.mention,
@@ -80,7 +82,9 @@ export default class Battle {
         }
         else if (p2!.energy <= 0) {
           p2!.granex -= this.value!
+          p2!.defeats -= 1
           p1!.granex += this.value!
+          p1!.wins += 1
     
           this.ctx.reply('commands.pvp.winner', {
             winner: user1.mention,
@@ -91,11 +95,17 @@ export default class Battle {
       break
       default: {
         if (p1!.energy <= 0) {
+          p2!.wins += 1
+          p1!.defeats += 1
+
           this.ctx.reply('commands.pvp.winner2', {
             winner: user2.mention
           })
         }
         else if (p2!.energy <= 0) {
+          p2!.defeats += 1
+          p1!.wins += 1
+
           this.ctx.reply('commands.pvp.winner2', {
             winner: user1.mention
           })
