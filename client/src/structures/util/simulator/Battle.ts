@@ -36,7 +36,7 @@ export default class Battle {
 
     p2!.energy -= damage
 
-    if (p2!.energy < 0) {
+    if (p2!.energy <= 0) {
       p2!.energy = 0
       this.finished = true
       return this.checkWinner(this.user1 as Member, this.user2 as Eris.User)
