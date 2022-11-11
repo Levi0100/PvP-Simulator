@@ -53,7 +53,8 @@ export const commands = {
     needs_weapon2: '{user} needs equip a weapon first.',
     request: '{user} {author} wants start a bet PvP match with you worth {granex} granex. So, are you in?',
     button: {
-      label: 'Accept'
+      label: 'Accept',
+      attack: 'ATTACK'
     },
     attack: '{author} attacked {user} and did a damage of {damage}\n{user} now has {energy} energy',
     starting: 'Starting the match.',

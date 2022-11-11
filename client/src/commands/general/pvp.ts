@@ -1,4 +1,4 @@
-import { ComponentInteraction } from 'eris'
+import { ActionRowComponents, ComponentInteraction } from 'eris'
 import { User } from '../../../../database'
 import { App, Battle, Button, Command, CommandContext } from '../../structures'
 
@@ -132,27 +132,58 @@ export default class PvPCommand extends Command {
         })))
 
         const collector = async (i: ComponentInteraction): Promise<void> => {
-          if (i.data.custom_id !== 'accept-pvp') return
-          if (i.channel.id !== msg.channel.id) return
-          if (i.member?.id !== _user?.id) return
-          if (!rival?.inUse?.weapon) {
-            await i.defer(64)
-            return i.createMessage(await this.locale.get('commands.pvp.needs_weapon'))
-          }
-          if (rival.inMatch) {
-            await i.defer(64)
-            return i.createMessage(await this.locale.get('commands.pvp.already_in_match'))
-          }
+          if (i.channel.id !== msg.channel.id) return console.log('a')
+          if (i.message.id !== msg.id) return console.log('b')
 
-          await i.defer()
-          i.createMessage(await this.locale.get('commands.pvp.starting'))
+          console.log(i.data.custom_id)
 
-          new Battle(ctx, ctx.interaction.member!, _user!, this.locale, value).init()
-          
-          rival.inMatch = true
-          user.inMatch = true
-          rival.save()
-          user.save()
+          switch (i.data.custom_id) {
+            case 'accept-pvp': {
+              if (i.member?.id !== _user?.id) return
+              if (!rival?.inUse?.weapon) {
+                await i.defer(64)
+                return i.createMessage(await this.locale.get('commands.pvp.needs_weapon'))
+              }
+              if (rival.inMatch) {
+                await i.defer(64)
+                return i.createMessage(await this.locale.get('commands.pvp.already_in_match'))
+              }
+
+              await i.deferUpdate()
+    
+              ctx.edit({
+                content: await this.locale.get('commands.pvp.starting'),
+                components: []
+              })
+              
+              //rival.inMatch = true
+              //user.inMatch = true
+              rival.save()
+              user.save()
+
+              const attack = new Button()
+              .setStyle('DANGER')
+              .setLabel(await this.locale.get('commands.pvp.button.attack'))
+              .setCustomId('attack')
+
+              setTimeout(async () => {
+                ctx.edit({
+                  content: '',
+                  components: [{
+                    type: 1,
+                    components: [attack]
+                  }]
+                })
+              }, 10000)
+            }
+            break
+            case 'attack': {
+              if (![rival.id, user.id].includes(i.member?.id)) return
+              await i.deferUpdate()
+              if (i.member?.id === ctx.interaction.member?.id) new Battle(ctx, ctx.interaction.member!, _user!, this.locale, value).initBattle()
+              else new Battle(ctx, _user!, ctx.interaction.member!, this.locale, value).initBattle()
+            }
+          }
         }
 
         this.client?.on('interactionCreate', collector)
@@ -183,8 +214,12 @@ export default class PvPCommand extends Command {
             return i.createMessage(await this.locale.get('commands.pvp.already_in_match'))
           }
 
-          await i.defer()
-          i.createMessage(await this.locale.get('commands.pvp.starting'))
+          await i.deferUpdate()
+
+          ctx.edit({
+            content: await this.locale.get('commands.pvp.starting'),
+            components: []
+          })
 
           new Battle(ctx, ctx.interaction.member!, _user!, this.locale, value).init()
 
@@ -195,7 +230,6 @@ export default class PvPCommand extends Command {
         }
 
         this.client?.on('interactionCreate', collector)
-        setTimeout(() => this.client?.removeListener('interactionCreate', collector), 1000 * 30)
       }
     }
   }

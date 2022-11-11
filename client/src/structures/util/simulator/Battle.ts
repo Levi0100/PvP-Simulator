@@ -1,20 +1,21 @@
 import Eris, { Member } from 'eris'
 import { User } from '../../../../../database'
 import CommandContext from '../../command/CommandContext'
+import Button from '../../components/Button'
 
 export default class Battle {
   ctx: CommandContext
-  author: Member
-  user: Eris.User
+  user1: Member | Eris.User
+  user2: Eris.User | Member
   locale: any
   finished?: boolean
   value?: number
   bet?: boolean
 
-  public constructor (ctx: CommandContext, author: Member, user: Eris.User, locale: any, value?: number) {
+  public constructor (ctx: CommandContext, user1: Member | Eris.User, user2: Eris.User | Member, locale: any, value?: number) {
     this.ctx = ctx
-    this.author = author
-    this.user = user
+    this.user1 = user1
+    this.user2 = user2
     this.locale = locale
     this.value = value
     if (this.value) this.bet = true
@@ -24,19 +25,11 @@ export default class Battle {
     setInterval (() => { this.initBattle() }, 10000)
   }
 
-  private async initBattle () {
+  public async initBattle () {
     if (this.finished) return
     
-    var arrayPlayers = [
-      this.author,
-      this.user
-    ]
-    var user1 = arrayPlayers[Math.floor(Math.random() * arrayPlayers.length)]
-    arrayPlayers.splice(arrayPlayers.indexOf(user1), 1)
-    var user2 = arrayPlayers[0]
-
-    const p1 = await User.findById(user1.id)
-    const p2 = await User.findById(user2.id)
+    const p1 = await User.findById(this.user1.id)
+    const p2 = await User.findById(this.user2.id)
 
     var damage = p1?.inUse?.weapon.damage
     if (p2?.inUse?.boots) damage -= p2?.inUse?.boots.def
@@ -50,17 +43,106 @@ export default class Battle {
     if (p2!.energy < 0) {
       p2!.energy = 0
       this.finished = true
-      this.checkWinner(user1 as Member, user2 as Eris.User)
+      this.checkWinner(this.user1 as Member, this.user2 as Eris.User)
     }
 
-    this.ctx.reply('commands.pvp.attack', {
-      user: user2.mention,
-      author: user1.mention,
-      damage,
-      energy: p2?.energy
+    this.ctx.edit({
+      content: await this.locale.get('commands.pvp.attack', {
+        user: this.user2.mention,
+        author: this.user1.mention,
+        damage,
+        energy: p2?.energy
+      }),
+      components: []
     })
 
     p2?.save()
+
+    setTimeout(async () => {
+      const a1 = new Button()
+      .setStyle('DANGER')
+      .setLabel(await this.locale.get('commands.pvp.button.attack'))
+      .setCustomId('attack1')
+      .setDisabled()
+
+      const a2 = new Button()
+      .setStyle('DANGER')
+      .setLabel(await this.locale.get('commands.pvp.button.attack'))
+      .setCustomId('attack2')
+      .setDisabled()
+
+      const a3 = new Button()
+      .setStyle('DANGER')
+      .setLabel(await this.locale.get('commands.pvp.button.attack'))
+      .setCustomId('attack3')
+      .setDisabled()
+
+      const a4 = new Button()
+      .setStyle('DANGER')
+      .setLabel(await this.locale.get('commands.pvp.button.attack'))
+      .setCustomId('attack4')
+      .setDisabled()
+
+      const a5 = new Button()
+      .setStyle('DANGER')
+      .setLabel(await this.locale.get('commands.pvp.button.attack'))
+      .setCustomId('attack5')
+      .setDisabled()
+
+      const a6 = new Button()
+      .setStyle('DANGER')
+      .setLabel(await this.locale.get('commands.pvp.button.attack'))
+      .setCustomId('attack6')
+      .setDisabled()
+      
+      var n = Math.floor(Math.random() * 6) + 1
+      console.log(n)
+      switch (n) {
+        case 1: {
+          a1.setEnabled()
+          a1.forceCustomId('attack')
+        }
+        break
+        case 2: {
+          a2.setEnabled()
+          a2.forceCustomId('attack')
+        }
+        break
+        case 3: {
+          a3.setEnabled()
+          a3.forceCustomId('attack')
+        }
+        break
+        case 4: {
+          a4.setEnabled()
+          a4.forceCustomId('attack')
+        }
+        break
+        case 5: {
+          a5.setEnabled()
+          a5.forceCustomId('attack')
+        }
+        break
+        case 6: {
+          a6.setEnabled()
+          a6.forceCustomId('attack')
+        }
+      }
+
+      this.ctx.edit({
+        content: '',
+        components: [
+          {
+            type: 1,
+            components: [a1, a2, a3]
+          },
+          {
+            type: 1,
+            components: [a4, a5, a6]
+          }
+        ]
+      })
+    }, 10000)
   }
 
   private async checkWinner (user1: Member, user2: Eris.User) {
@@ -75,20 +157,26 @@ export default class Battle {
           p1!.granex -= this.value!
           p1!.defeats += 1
     
-          this.ctx.reply('commands.pvp.winner', {
-            winner: user2.mention,
-            value: this.value?.toLocaleString()
+          this.ctx.edit({
+            content: await this.locale.get('commands.pvp.winner', {
+              winner: user2.mention,
+              value: this.value?.toLocaleString()
+            }),
+            components: []
           })
         }
         else if (p2!.energy <= 0) {
           p2!.granex -= this.value!
-          p2!.defeats -= 1
+          p2!.defeats += 1
           p1!.granex += this.value!
           p1!.wins += 1
     
-          this.ctx.reply('commands.pvp.winner', {
-            winner: user1.mention,
-            value: this.value?.toLocaleString()
+          this.ctx.edit({
+            content: await this.locale.get('commands.pvp.winner', {
+              winner: user1.mention,
+              value: this.value?.toLocaleString()
+            }),
+            components: []
           })
         }
       }
@@ -98,16 +186,22 @@ export default class Battle {
           p2!.wins += 1
           p1!.defeats += 1
 
-          this.ctx.reply('commands.pvp.winner2', {
-            winner: user2.mention
+          this.ctx.edit({
+            content: await this.locale.get('commands.pvp.winner2', {
+              winner: user2.mention
+            }),
+            components: []
           })
         }
         else if (p2!.energy <= 0) {
           p2!.defeats += 1
           p1!.wins += 1
 
-          this.ctx.reply('commands.pvp.winner2', {
-            winner: user1.mention
+          this.ctx.edit({
+            content: await this.locale.get('commands.pvp.winner2', {
+              winner: user1.mention
+            }),
+            components: []
           })
         }
       }

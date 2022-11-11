@@ -39,6 +39,11 @@ export default class Button {
     return this
   }
 
+  public forceCustomId (id: string) {
+    this.custom_id = id
+    return this
+  }
+
   public setEmoji (emoji: string) {
     if (isNaN(Number(emoji))) this.emoji!.name = emoji
     else this.emoji!.id = emoji
@@ -52,6 +57,11 @@ export default class Button {
 
   public setDisabled () {
     this.disabled = true
+    return this
+  }
+
+  public setEnabled () {
+    this.disabled = false
     return this
   }
 

@@ -47,7 +47,7 @@ export default class ProfileCommand extends Command {
     if (!user) return ctx.reply('helper.user_is_not_in_db')
 
     const template = await loadImage('https://imgur.com/1wp1OvT.png')
-    //const background = await loadImage(user.background!)
+    const background = await loadImage(user.background ?? 'https://imgur.com/yq3R7PT.png')
     const avatar = await loadImage(_user?.avatarURL!)
 
     _context.beginPath()
@@ -58,7 +58,7 @@ export default class ProfileCommand extends Command {
     _context.drawImage(avatar, 755, 335, 410, 410)
 
     var avatarImg = _canvas
-    //context.drawImage(background, 0, 0, canvas.width, canvas.height)
+    context.drawImage(background, 0, 0, canvas.width, canvas.height)
     context.drawImage(avatarImg, 0, 0, canvas.width, canvas.height)
     context.drawImage(template, 0, 0, canvas.width, canvas.height)
 
@@ -66,7 +66,7 @@ export default class ProfileCommand extends Command {
     context.fillStyle = '#ffffff'
     context.fillText(_user?.username!, 551, 890)
 
-    ctx.reply('a', {
+    ctx.reply('', {
       file: canvas.toBuffer(),
       name: 'profile.png'
     })

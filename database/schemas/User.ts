@@ -45,7 +45,15 @@ const user = new Schema({
     default: 1000
   },
   inMatch: Boolean,
-  background: String
+  background: String,
+  wins: {
+    type: Number,
+    default: 0
+  },
+  defeats: {
+    type: Number,
+    default: 0
+  }
 })
 
 export default model('users', user)

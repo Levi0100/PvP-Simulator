@@ -54,7 +54,8 @@ export const commands = {
     needs_weapon2: '{user} precisa equipar uma arma primeiro.',
     request: '{user} {author} quer iniciar uma partida de PvP apostada com você valendo {value} granex. E aí, vai encarar?',
     button: {
-      label: 'Aceitar'
+      label: 'Aceitar',
+      attack: 'ATACAR'
     },
     attack: '{author} atacou {user} e fez um dano de {damage}\n{user} agora tem {energy} energia',
     starting: 'Iniciando a partida.',
