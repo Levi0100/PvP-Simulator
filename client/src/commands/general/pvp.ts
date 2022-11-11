@@ -133,7 +133,7 @@ export default class PvPCommand extends Command {
 
         const collector = async (i: ComponentInteraction): Promise<void> => {
           if (i.channel.id !== msg.channel.id) return
-          if (i.message.id !== msg.id) return
+          if (i.message?.id !== msg.id) return
 
           console.log(i.data.custom_id)
 
@@ -202,7 +202,7 @@ export default class PvPCommand extends Command {
 
         const collector = async (i: ComponentInteraction): Promise<void> => {
           if (i.channel.id !== msg.channel.id) return
-          if (i.message.id !== msg.id) return
+          if (i.message?.id !== msg.id) return
 
           switch (i.data.custom_id) {
             case 'accept-pvp': {
