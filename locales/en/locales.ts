@@ -10,7 +10,7 @@ export const commands = {
   },
   start: {
     you_already_created_data: 'You already created your data. You are welcome to play **PvP Simulator**.',
-    done: 'Your data has been created successfully. You can already play **PvP Simulator**.'
+    done: 'Your data has been created successfully. You can already play **PvP Simulator**.\nYou can change the language that a interact with you with </config language:1031022057644892331>'
   },
   daily: {
     has_been_picked: 'You already picked your daily prize. Try again {time}',
