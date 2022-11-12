@@ -301,6 +301,24 @@ export default class EquipCommand extends Command {
           item: `${broad_sword.name} ${broad_sword.type}`
         })
       }
+      break
+      case 'sword': {
+        var weapon = user.inventory.weapons.filter((weapon: any) => weapon.type === 'sword')[option.options[0].value]
+        if (!weapon) return ctx.reply('commands.equip.dont_have_this')
+
+        if (user.inUse.weapon) user.inventory.weapons.splice(user.inventory.weapons.indexOf(weapon), 1, user.inUse.weapon)
+        else user.inventory.weapons.splice(user.inventory.weapons.indexOf(weapon), 1)
+
+        user.inUse.weapon = weapon
+
+        var sword = weapons[weapon.type][weapon.name]
+
+        user.save()
+
+        ctx.reply('commands.equip.equiped', {
+          item: `${sword.name} ${sword.type}`
+        })
+      }
     }
   }
 }
