@@ -1,6 +1,7 @@
 import { createCanvas, loadImage } from 'canvas'
 import { User } from '../../../../database'
 import { App, Command, CommandContext } from '../../structures'
+import { fillTextWithTwemoji } from 'node-canvas-with-twemoji-and-discord-emoji'
 
 interface CommandOptions {
   type: number
@@ -62,9 +63,24 @@ export default class ProfileCommand extends Command {
     context.drawImage(avatarImg, 0, 0, canvas.width, canvas.height)
     context.drawImage(template, 0, 0, canvas.width, canvas.height)
 
-    context.font = '98px bold'
+    context.font = '78px bold'
     context.fillStyle = '#ffffff'
-    context.fillText(_user?.username!, 551, 890)
+    context.fillText(`${_user?.username}#${_user?.discriminator}`, 521, 960)
+
+    context.font = '30px regular'
+    context.fillStyle = '#ffffff'
+    context.fillText(user.energy.toString(), 81, 128)
+    await fillTextWithTwemoji(context, '<:granex:874481096799186955>', 41, 84)
+
+    context.font = '30px regular'
+    context.fillStyle = '#ffffff'
+    context.fillText(user.granex.toLocaleString(), 81, 83)
+    await fillTextWithTwemoji(context, '⚡', 41, 129)
+
+    context.font = '30px regular'
+    context.fillStyle = '#ffffff'
+    context.fillText(user.wins.toString(), 81, 173)
+    await fillTextWithTwemoji(context, '🏆', 41, 174)
 
     ctx.reply('', {
       file: canvas.toBuffer(),
