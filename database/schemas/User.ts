@@ -42,7 +42,7 @@ const user = new Schema({
   battling: Boolean,
   energy: {
     type: Number,
-    default: 1000
+    default: 500
   },
   inMatch: Boolean,
   background: String,
