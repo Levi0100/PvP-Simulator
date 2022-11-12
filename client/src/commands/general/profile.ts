@@ -67,19 +67,19 @@ export default class ProfileCommand extends Command {
     context.fillStyle = '#ffffff'
     context.fillText(`${_user?.username}#${_user?.discriminator}`, 521, 960)
 
-    context.font = '30px regular'
+    context.font = '40px regular'
     context.fillStyle = '#ffffff'
-    context.fillText(user.energy.toString(), 81, 128)
-    await fillTextWithTwemoji(context, '<:granex:874481096799186955>', 41, 84)
+    context.fillText(user.energy.toString(), 101, 128)
+    await fillTextWithTwemoji(context, '<:granex:8744101096799186955>', 41, 84)
 
-    context.font = '30px regular'
+    context.font = '40px regular'
     context.fillStyle = '#ffffff'
-    context.fillText(user.granex.toLocaleString(), 81, 83)
+    context.fillText(user.granex.toLocaleString(), 101, 83)
     await fillTextWithTwemoji(context, '⚡', 41, 129)
 
-    context.font = '30px regular'
+    context.font = '40px regular'
     context.fillStyle = '#ffffff'
-    context.fillText(user.wins.toString(), 81, 173)
+    context.fillText(user.wins.toString(), 101, 173)
     await fillTextWithTwemoji(context, '🏆', 41, 174)
 
     ctx.reply('', {
