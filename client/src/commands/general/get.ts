@@ -103,7 +103,7 @@ export default class GetCommand extends Command {
             ])
 
             ctx.reply(embed.build(await this.locale.get('commands.get.congrats2', {
-              weapon: `${_armor.name} ${_armor.type}`
+              armor: `${_armor.name} ${_armor.type}`
             })))
           }
           break
