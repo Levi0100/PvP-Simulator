@@ -22,7 +22,11 @@ export const commands = {
     congrats: 'A arma **{weapon}** acaba de chegar de forma gratuita para você!',
     congrats2: 'A peça de armadura **{armor}** acaba de chegar de forma gratuita para você!',
     you_dont_have_refined_granex: 'Você precisa de pelo menos 1 Granex Refinado para usar este comando.',
-    has_been_picked: 'Você já coletou um item recentemente. Tente novamente {time}'
+    has_been_picked: 'Você já coletou um item recentemente. Tente novamente {time}',
+    def: 'Defesa',
+    damage: 'Dano',
+    stars: 'Estrelas',
+    status: 'Status do Item'
   },
   top: {
     dont_have_more_pages: 'Não existem mais páginas de rank a serem mostradas.',

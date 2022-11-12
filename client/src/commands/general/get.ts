@@ -1,8 +1,8 @@
-import { Weapon, Armor, User } from '../../../../database'
-import { Command, CommandContext } from '../../structures'
+import { User } from '../../../../database'
+import { App, armors, Command, CommandContext, Embed, weapons } from '../../structures'
 
 export default class GetCommand extends Command {
-  constructor () {
+  constructor (client: App) {
     super({
       name: 'get',
       name_localizations: {
@@ -33,7 +33,9 @@ export default class GetCommand extends Command {
           }
         }
       ],
-      category: 'general'
+      category: 'general',
+      botPermissions: ['embedLinks'],
+      client
     })
   }
 
@@ -57,53 +59,19 @@ export default class GetCommand extends Command {
 
         switch (weaponOrArmor) {
           case 'armor': {
-            var armors
+            var amr
 
-            if (percentual <= 0.05) armors = await Armor.find(
-              {
-                stars: {
-                  $eq: 5
-                }
-              }
-            )
-            else if (percentual <= 1.05) armors = await Armor.find(
-              {
-                stars: {
-                  $eq: 4
-                }
-              }
-            )
-            else if (percentual <= 7) armors = await Armor.find(
-              {
-                stars: {
-                  $eq: 3
-                }
-              }
-            )
-            else if (percentual <= 39.95) armors = await Armor.find(
-              {
-                stars: {
-                  $eq: 2
-                }
-              }
-            )
-            else if (percentual <= 51.95) armors = await Armor.find(
-              {
-                stars: {
-                  $eq: 1
-                }
-              }
-            )
-            else armors = await Armor.find(
-              {
-                stars: {
-                  $eq: 1
-                }
-              }
-            )
+            if (percentual <= 0.05) amr = armors.filter(armor => armor.stars === 5)
+            else if (percentual <= 1.05) amr =  armors.filter(armor => armor.stars === 4)
+            else if (percentual <= 7) amr =  armors.filter(armor => armor.stars === 3)
+            else if (percentual <= 39.95) amr =  armors.filter(armor => armor.stars === 2)
+            else if (percentual <= 51.95) amr =  armors.filter(armor => armor.stars === 1)
+            else amr =  armors.filter(armor => armor.stars === 1)
 
-            var armor = armors[Math.floor(Math.random() * armors.length)]
+            var armor = amr[Math.floor(Math.random() * amr.length)]
             const locale = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
+
+            console.log(armor)
 
             var _armor = locale.armors[armor.type!][armor.name!]
 
@@ -118,58 +86,38 @@ export default class GetCommand extends Command {
             user!.getTime = Date.now() + 420000
             user?.save()
 
-            ctx.reply('commands.get.congrats2', {
-              armor: `${_armor.name} ${_armor.type}`
-            })
+            const embed = new Embed()
+            .setAuthor(`${_armor.name} ${_armor.type}`, this.client?.user.avatarURL)
+            .setTitle(await this.locale.get('commands.get.status'))
+            .addFields([
+              {
+                name: await this.locale.get('commands.get.def'),
+                value: armor.def,
+                inline: true
+              },
+              {
+                name: await this.locale.get('commands.get.stars'),
+                value: armor.stars,
+                inline: true
+              }
+            ])
+
+            ctx.reply(embed.build(await this.locale.get('commands.get.congrats2', {
+              weapon: `${_armor.name} ${_armor.type}`
+            })))
           }
           break
           default: {
-            var weapons
+            var wps
 
-            if (percentual <= 0.05) weapons = await Weapon.find(
-              {
-                stars: {
-                  $eq: 5
-                }
-              }
-            )
-            else if (percentual <= 1.05) weapons = await Weapon.find(
-              {
-                stars: {
-                  $eq: 4
-                }
-              }
-            )
-            else if (percentual <= 7) weapons = await Weapon.find(
-              {
-                stars: {
-                  $eq: 3
-                }
-              }
-            )
-            else if (percentual <= 39.95) weapons = await Weapon.find(
-              {
-                stars: {
-                  $eq: 2
-                }
-              }
-            )
-            else if (percentual <= 51.95) weapons = await Weapon.find(
-              {
-                stars: {
-                  $eq: 1
-                }
-              }
-            )
-            else weapons = await Weapon.find(
-              {
-                stars: {
-                  $eq: 1
-                }
-              }
-            )
+            if (percentual <= 0.05) wps =  weapons.filter(weapon => weapon.stars === 5)
+            else if (percentual <= 1.05) wps = weapons.filter(weapon => weapon.stars === 4)
+            else if (percentual <= 7) wps =  weapons.filter(weapon => weapon.stars === 3)
+            else if (percentual <= 39.95) wps =  weapons.filter(weapon => weapon.stars === 2)
+            else if (percentual <= 51.95) wps =  weapons.filter(weapon => weapon.stars === 1)
+            else wps =  weapons.filter(weapon => weapon.stars === 1)
 
-            var weapon = weapons[Math.floor(Math.random() * weapons.length)]
+            var weapon = wps[Math.floor(Math.random() * wps.length)]
             const locale = await import(`../../../../locales/${ctx.db.user.locale}/weapons`)
 
             var _weapon = locale.weapons[weapon.type!][weapon.name!]
@@ -185,9 +133,25 @@ export default class GetCommand extends Command {
             user!.getTime = Date.now() + 420000
             user?.save()
 
-            ctx.reply('commands.get.congrats', {
+            const embed = new Embed()
+            .setAuthor(`${_weapon.name} ${_weapon.type}`, this.client?.user.avatarURL)
+            .setTitle(await this.locale.get('commands.get.status'))
+            .addFields([
+              {
+                name: await this.locale.get('commands.get.damage'),
+                value: weapon.damage,
+                inline: true
+              },
+              {
+                name: await this.locale.get('commands.get.stars'),
+                value: weapon.stars,
+                inline: true
+              }
+            ])
+
+            ctx.reply(embed.build(await this.locale.get('commands.get.congrats', {
               weapon: `${_weapon.name} ${_weapon.type}`
-            })
+            })))
           }
         }
       }
@@ -200,52 +164,16 @@ export default class GetCommand extends Command {
 
         switch (weaponOrArmor) {
           case 'armor': {
-            var armors
+            var amr
 
-            if (percentual <= 2) armors = await Armor.find(
-              {
-                stars: {
-                  $eq: 5
-                }
-              }
-            )
-            else if (percentual <= 14) armors = await Armor.find(
-              {
-                stars: {
-                  $eq: 4
-                }
-              }
-            )
-            else if (percentual <= 19) armors = await Armor.find(
-              {
-                stars: {
-                  $eq: 3
-                }
-              }
-            )
-            else if (percentual <= 25) armors = await Armor.find(
-              {
-                stars: {
-                  $eq: 2
-                }
-              }
-            )
-            else if (percentual <= 40) armors = await Armor.find(
-              {
-                stars: {
-                  $eq: 1
-                }
-              }
-            )
-            else armors = await Armor.find(
-              {
-                stars: {
-                  $eq: 1
-                }
-              }
-            )
+            if (percentual <= 2) amr = armors.filter(armor => armor.stars === 5)
+            else if (percentual <= 14) amr = armors.filter(armor => armor.stars === 4)
+            else if (percentual <= 19) amr = armors.filter(armor => armor.stars === 3)
+            else if (percentual <= 25) amr = armors.filter(armor => armor.stars === 2)
+            else if (percentual <= 40) amr = armors.filter(armor => armor.stars === 1)
+            else amr = armors.filter(armor => armor.stars === 1)
 
-            var armor = armors[Math.floor(Math.random() * armors.length)]
+            var armor = amr[Math.floor(Math.random() * amr.length)]
             const locale = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
 
             var _armor = locale.armors[armor.type!][armor.name!]
@@ -261,58 +189,38 @@ export default class GetCommand extends Command {
             user.getTime = Date.now() + 420000
             user?.save()
 
-            ctx.reply('commands.get.congrats2', {
+            const embed = new Embed()
+            .setAuthor(`${_armor.name} ${_armor.type}`, this.client?.user.avatarURL)
+            .setTitle(await this.locale.get('commands.get.status'))
+            .addFields([
+              {
+                name: await this.locale.get('commands.get.def'),
+                value: armor.def,
+                inline: true
+              },
+              {
+                name: await this.locale.get('commands.get.stars'),
+                value: armor.stars,
+                inline: true
+              }
+            ])
+
+            ctx.reply(embed.build(await this.locale.get('commands.get.congrats2', {
               armor: `${_armor.name} ${_armor.type}`
-            })
+            })))
           }
           break
           default: {
-            var weapons
+            var wps
 
-            if (percentual <= 2) weapons = await Weapon.find(
-              {
-                stars: {
-                  $eq: 5
-                }
-              }
-            )
-            else if (percentual <= 14) weapons = await Weapon.find(
-              {
-                stars: {
-                  $eq: 4
-                }
-              }
-            )
-            else if (percentual <= 19) weapons = await Weapon.find(
-              {
-                stars: {
-                  $eq: 3
-                }
-              }
-            )
-            else if (percentual <= 25) weapons = await Weapon.find(
-              {
-                stars: {
-                  $eq: 2
-                }
-              }
-            )
-            else if (percentual <= 40) weapons = await Weapon.find(
-              {
-                stars: {
-                  $eq: 1
-                }
-              }
-            )
-            else weapons = await Weapon.find(
-              {
-                stars: {
-                  $eq: 1
-                }
-              }
-            )
+            if (percentual <= 2) wps =  weapons.filter(weapon => weapon.stars === 5)
+            else if (percentual <= 14) wps =  weapons.filter(weapon => weapon.stars === 4)
+            else if (percentual <= 19) wps =  weapons.filter(weapon => weapon.stars === 3)
+            else if (percentual <= 25) wps =  weapons.filter(weapon => weapon.stars === 2)
+            else if (percentual <= 40) wps =  weapons.filter(weapon => weapon.stars === 1)
+            else wps =  weapons.filter(weapon => weapon.stars === 1)
 
-            var weapon = weapons[Math.floor(Math.random() * weapons.length)]
+            var weapon = wps[Math.floor(Math.random() * wps.length)]
             const locale = await import(`../../../../locales/${ctx.db.user.locale}/weapons`)
 
             var _weapon = locale.weapons[weapon.type!][weapon.name!]
@@ -328,9 +236,25 @@ export default class GetCommand extends Command {
             user.getTime = Date.now() + 420000
             user?.save()
 
-            ctx.reply('commands.get.congrats', {
+            const embed = new Embed()
+            .setAuthor(`${_weapon.name} ${_weapon.type}`, this.client?.user.avatarURL)
+            .setTitle(await this.locale.get('commands.get.status'))
+            .addFields([
+              {
+                name: await this.locale.get('commands.get.damage'),
+                value: weapon.damage,
+                inline: true
+              },
+              {
+                name: await this.locale.get('commands.get.stars'),
+                value: weapon.stars,
+                inline: true
+              }
+            ])
+
+            ctx.reply(embed.build(await this.locale.get('commands.get.congrats', {
               weapon: `${_weapon.name} ${_weapon.type}`
-            })
+            })))
           }
         }
       }

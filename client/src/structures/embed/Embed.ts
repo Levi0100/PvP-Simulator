@@ -6,7 +6,7 @@ interface EmbedAuthorOptions {
 
 interface EmbedFieldOption {
   name: string
-  value: string
+  value: string | number
   inline?: boolean
 }
 
@@ -55,7 +55,7 @@ class Embed {
     return this
   }
 
-  public addField (name: string, value: string, inline?: boolean) {
+  public addField (name: string, value: string | number, inline?: boolean) {
     this.fields?.push(
       {
         name,

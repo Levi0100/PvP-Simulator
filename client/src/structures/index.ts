@@ -7,6 +7,8 @@ import Logger from './util/Logger'
 import Embed from './embed/Embed'
 import Button from './components/Button'
 import Battle from './util/simulator/Battle'
+import weapons from './util/simulator/weapons'
+import armors from './util/simulator/armors'
 
 export {
   App,
@@ -18,5 +20,7 @@ export {
   Logger,
   Embed,
   Button,
-  Battle
+  Battle,
+  weapons,
+  armors
 }
