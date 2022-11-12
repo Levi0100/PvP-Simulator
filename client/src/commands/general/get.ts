@@ -43,10 +43,6 @@ export default class GetCommand extends Command {
     const user = await User.findById(ctx.interaction.member?.id)
     const option = ctx.interaction.data.options![0]
 
-    if (ctx.db.user.getTime > Date.now()) return ctx.reply('commands.get.has_been_picked', {
-      time: `<t:${parseInt(((ctx.db.user.getTime) / 1000).toString())}:R>`
-    })
-
     var array = [
       'armor',
       'weapon'
@@ -55,6 +51,10 @@ export default class GetCommand extends Command {
     
     switch (option.name) {
       case 'normal': {
+        if (ctx.db.user.getTime > Date.now()) return ctx.reply('commands.get.has_been_picked', {
+          time: `<t:${parseInt(((ctx.db.user.getTime) / 1000).toString())}:R>`
+        })
+        
         var percentual = Math.random() * 100
 
         switch (weaponOrArmor) {
