@@ -69,6 +69,9 @@ export const commands = {
     winner2: '{winner} foi o grande vencedor da rodada.',
     request2: '{user} {author} quer iniciar uma partida de PvP normal com você. E aí, vai encarar?',
     already_in_match: 'Você já está em uma partida de PvP. Aguarde até o término da mesma e tente novamente mais tarde.'
+  },
+  convert: {
+    done: '{refinedGranex} Granex Refinado foram convertidos em {granex} Granex.'
   }
 }
 
@@ -80,6 +83,6 @@ export const helper = {
   },
   you_dont_have_data: 'Parece que você é novo por aqui... Que tal começar usando </start:1031733050041704518>?',
   user_is_not_in_db: 'Este usuário ainda não criou seus dados através do comando </start:1031733050041704518>',
-  dont_have_granex: 'Você não possui essa quantidade de granex. Consulte seu saldo com </granex:1032759218232627322> e tente novamente.',
-  dont_have_granex2: '{user} não possui essa quantidade de granex.'
+  dont_have_granex: 'Você não possui essa quantidade de Granex. Consulte seu saldo com </granex:1032759218232627322> e tente novamente.',
+  dont_have_granex2: '{user} não possui essa quantidade de Granex.'
 }

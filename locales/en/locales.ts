@@ -68,6 +68,9 @@ export const commands = {
     winner2: '{winner} was the big winner of this match.',
     request2: '{user} {author} wants start a normal PvP match with you. So, are you in?',
     already_in_match: 'You are already in a PvP match. Wait until it finishes and try again later.'
+  },
+  convert: {
+    done: '{refinedGranex} Refined Granex has been converted to {granex} Granex.'
   }
 }
 
@@ -78,5 +81,7 @@ export const helper = {
     bot: 'I\'m missing this permissiosn to this commands works: {permissions}'
   },
   you_dont_have_data: 'It looks like you are new here... How about you start by using </start:1031733050041704518>?',
-  user_is_not_in_db: 'This user still not created his data by the </start:1031733050041704518> command.'
+  user_is_not_in_db: 'This user still not created his data by the </start:1031733050041704518> command.',
+  dont_have_granex: 'You don\'t have this Granex amount. View your balance with </granex:1032759218232627322> and try again.',
+  dont_have_granex2: '{user} doesn\'t have this Granex amount.'
 }
