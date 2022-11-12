@@ -205,6 +205,28 @@ export default class InventoryCommand extends Command {
   
           ctx.reply(embed.build())
         }
+        break
+        case 'sword': {
+          if (user?.inventory?.weapons.filter(weapon => weapon.type == options[0].value).length === 0) return ctx.reply('commands.inventory.empty')
+  
+          var pos = 0
+  
+          embed.setTitle(await this.locale.get('commands.inventory.embed.title'))
+          embed.setFooter(await this.locale.get('commands.inventory.embed.footer', {
+            filter: options[0].value
+          }))
+  
+          for (const weapon of user!.inventory!.weapons.filter(weapon => weapon.type == 'sword')) {
+            var _weapon = weapons[weapon.type][weapon.name]
+            embed.addField(`${_weapon.name} ${_weapon.type}`, await this.locale.get('commands.inventory.embed.field2', {
+              pos: pos++,
+              damage: weapon.damage,
+              stars: weapon.stars
+            }))
+          }
+  
+          ctx.reply(embed.build())
+        }
       }
     }
     else {
