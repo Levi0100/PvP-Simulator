@@ -101,7 +101,7 @@ export default class ShopCommand extends Command {
 
   async run (ctx: CommandContext) {
     const options = ctx.interaction.data.options as CommandOptions[]
-    if (!options[1].value) options[1].value = 1
+    if (!options[1]?.value) options[1]!.value = 1
     const embed = new Embed()
     .setAuthor(await this.locale.get('commands.shop.embed.author', {
       page: options[1].value
