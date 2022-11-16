@@ -1148,6 +1148,7 @@ export default class ShopCommand extends Command {
         if (user!.granex < 200) return ctx.reply('helper.dont_have_granex')
 
         user!.energy = 500
+        user!.granex -= 200
         user?.save()
 
         ctx.reply('commands.shop.restored')
