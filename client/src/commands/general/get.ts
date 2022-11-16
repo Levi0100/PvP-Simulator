@@ -83,7 +83,7 @@ export default class GetCommand extends Command {
                 def: armor.def
               }
             )
-            user!.getTime = Date.now() + 420000
+            user!.getTime = Date.now() + 120000
             user?.save()
 
             const embed = new Embed()
@@ -130,7 +130,7 @@ export default class GetCommand extends Command {
                 damage: weapon.damage
               }
             )
-            user!.getTime = Date.now() + 420000
+            user!.getTime = Date.now() + 120000
             user?.save()
 
             const embed = new Embed()
