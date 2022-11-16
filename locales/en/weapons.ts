@@ -110,7 +110,7 @@ export const weapons = {
       damage: 117,
       stars: 4
     },
-    magig_world: {
+    magic_world: {
       type: 'Magic World',
       name: 'Broad Sword of',
       damage: 121,

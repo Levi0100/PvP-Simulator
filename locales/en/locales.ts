@@ -40,7 +40,7 @@ export const commands = {
     reply2: '{user} has {granex} Granex and is in #{pos} in the position of users with more Granex.\nAlso {user} has {refinedGranex} Refined Granex.'
   },
   equip: {
-    dont_have_this: 'You don\'t have this item in your inventory. Verify your inventory and try again.',
+    dont_have_this: 'You don\'t have this item in your inventory. Verify your inventory with </inventory:1035461161451262044> and try again.',
     equiped: 'You was equip **{item}** successfully!'
   },
   inventory: {
@@ -71,6 +71,17 @@ export const commands = {
   },
   convert: {
     done: '{refinedGranex} Refined Granex has been converted to {granex} Granex.'
+  },
+  shop: {
+    embed: {
+      author: 'Page {page}',
+      title: 'SHOP',
+      field: 'Damage: {damage}\nStars: {stars}'
+    },
+    done: 'You bought **{item}** successfully!'
+  },
+  remove: {
+    done: 'You removed **{item}** from your inventory successfully!'
   }
 }
 
@@ -83,5 +94,7 @@ export const helper = {
   you_dont_have_data: 'It looks like you are new here... How about you start by using </start:1031733050041704518>?',
   user_is_not_in_db: 'This user still not created his data by the </start:1031733050041704518> command.',
   dont_have_granex: 'You don\'t have this Granex amount. View your balance with </granex:1032759218232627322> and try again.',
-  dont_have_granex2: '{user} doesn\'t have this Granex amount.'
+  dont_have_granex2: '{user} doesn\'t have this Granex amount.',
+  limit_of_weapons: 'You have reached the maximum limit of weapons supported so far. Try to remove any useless weapons from your inventory with </remove sword:1042512580083724419> or </remove broad_sword:1042512580083724419> and try again.',
+  limit_of_armors: 'You have reached the maximum limit of armors supported so far. Try to remove any useless armors from your inventory with </remove helmet:1042512580083724419>, </remove chest:1042512580083724419>, </remove pants:1042512580083724419>, or </remove boots:1042512580083724419> and try again.'
 }

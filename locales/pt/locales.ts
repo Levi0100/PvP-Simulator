@@ -41,7 +41,7 @@ export const commands = {
     reply2: '{user} possui {granex} Granex e está em {pos}º lugar na posição de usuários com mais Granex.\n{user} também possui {refinedGranex} Granex Refinado.'
   },
   equip: {
-    dont_have_this: 'Você não possui este item em seu inventário. Verifique seu inventário e tente novamente.',
+    dont_have_this: 'Você não possui este item em seu inventário. Verifique seu inventário com </inventory:1035461161451262044> e tente novamente.',
     equiped: 'Você equipou **{item}** com sucesso!'
   },
   inventory: {
@@ -72,6 +72,17 @@ export const commands = {
   },
   convert: {
     done: '{refinedGranex} Granex Refinado foram convertidos em {granex} Granex.'
+  },
+  shop: {
+    embed: {
+      author: 'Página {page}',
+      title: 'LOJA',
+      field: 'Dano: {damage}\nEstrelas: {stars}'
+    },
+    done: 'Você comprou **{item}** com sucesso!'
+  },
+  remove: {
+    done: 'Você removeu **{item}** do seu inventário com sucesso!'
   }
 }
 
@@ -84,5 +95,7 @@ export const helper = {
   you_dont_have_data: 'Parece que você é novo por aqui... Que tal começar usando </start:1031733050041704518>?',
   user_is_not_in_db: 'Este usuário ainda não criou seus dados através do comando </start:1031733050041704518>',
   dont_have_granex: 'Você não possui essa quantidade de Granex. Consulte seu saldo com </granex:1032759218232627322> e tente novamente.',
-  dont_have_granex2: '{user} não possui essa quantidade de Granex.'
+  dont_have_granex2: '{user} não possui essa quantidade de Granex.',
+  limit_of_weapons: 'Você atingiu o limite máximo de armas suportado até o momento. Tente remover alguma arma inútil do seu inventário com </remove sword:1042512580083724419> ou </remove broad_sword:1042512580083724419> e tente novamente.',
+  limit_of_armors: 'Você atingiu o limite máximo de armaduras suportado até o momento. Tente remover alguma armadura inútil do seu inventário com </remove helmet:1042512580083724419>, </remove chest:1042512580083724419>, </remove pants:1042512580083724419>, ou </remove boots:1042512580083724419> e tente novamente.'
 }

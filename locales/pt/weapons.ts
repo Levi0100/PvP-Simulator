@@ -43,7 +43,7 @@ export const weapons = {
       damage: 75
     },
     dark: {
-      type: 'Negro',
+      type: 'Negra',
       name: 'Espada',
       stars: 4,
       damage: 75
@@ -110,7 +110,7 @@ export const weapons = {
       damage: 117,
       stars: 4
     },
-    magig_world: {
+    magic_world: {
       type: 'Mundo Mágico',
       name: 'Espadão do',
       damage: 121,
