@@ -78,11 +78,11 @@ export const commands = {
       title: 'SHOP',
       field: 'Damage: {damage}\nStars: {stars}'
     },
-    done: 'You bought **{item}** successfully!'
+    done: 'You bought **{item}** successfully!',
+    restored: 'Energy restored successfully!'
   },
   remove: {
-    done: 'You removed **{item}** from your inventory successfully!',
-    restored: 'Energy restored successfully!'
+    done: 'You removed **{item}** from your inventory successfully!'
   }
 }
 
