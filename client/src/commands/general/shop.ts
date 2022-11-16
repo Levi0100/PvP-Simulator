@@ -101,10 +101,9 @@ export default class ShopCommand extends Command {
 
   async run (ctx: CommandContext) {
     const options = ctx.interaction.data.options as CommandOptions[]
-    if (!options[1]?.value) options[1]!.value = 1
     const embed = new Embed()
     .setAuthor(await this.locale.get('commands.shop.embed.author', {
-      page: options[1].value
+      page: options[1].value ?? 1
     }), this.client?.user.avatarURL)
     .setTitle(await this.locale.get('commands.shop.embed.title'))
     const row = new ActionRow()
@@ -113,7 +112,7 @@ export default class ShopCommand extends Command {
     switch (options[0].value) {
       case 'helmet': {
         const locale = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
-        var ams = armors.filter(w => w.type === 'helmet' && w.stars < 4).slice(options[1].value * 10 - 10, options[1].value * 10).sort((a, b) => b.price! - a.price!)
+        var ams = armors.filter(w => w.type === 'helmet' && w.stars < 4).slice(options[1].value ?? 1 * 10 - 10, options[1].value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
 
         var customId = 0
         for (var armor of ams) {
@@ -285,7 +284,7 @@ export default class ShopCommand extends Command {
       break
       case 'chest': {
         const locale = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
-        var ams = armors.filter(w => w.type === 'chest' && w.stars < 4).slice(options[1].value * 10 - 10, options[1].value * 10).sort((a, b) => b.price! - a.price!)
+        var ams = armors.filter(w => w.type === 'chest' && w.stars < 4).slice(options[1].value ?? 1 * 10 - 10, options[1].value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
 
         var customId = 0
         for (var armor of ams) {
@@ -457,7 +456,7 @@ export default class ShopCommand extends Command {
       break
       case 'pants': {
         const locale = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
-        var ams = armors.filter(w => w.type === 'pants' && w.stars < 4).slice(options[1].value * 10 - 10, options[1].value * 10).sort((a, b) => b.price! - a.price!)
+        var ams = armors.filter(w => w.type === 'pants' && w.stars < 4).slice(options[1].value ?? 1 * 10 - 10, options[1].value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
 
         var customId = 0
         for (var armor of ams) {
@@ -629,7 +628,7 @@ export default class ShopCommand extends Command {
       break
       case 'boots': {
         const locale = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
-        var ams = armors.filter(w => w.type === 'boots' && w.stars < 4).slice(options[1].value * 10 - 10, options[1].value * 10).sort((a, b) => b.price! - a.price!)
+        var ams = armors.filter(w => w.type === 'boots' && w.stars < 4).slice(options[1].value ?? 1 * 10 - 10, options[1].value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
 
         var customId = 0
         for (var armor of ams) {
@@ -801,7 +800,7 @@ export default class ShopCommand extends Command {
       break
       case 'sword': {
         const locale = await import(`../../../../locales/${ctx.db.user.locale}/weapons`)
-        var wps = weapons.filter(w => w.type === 'sword' && w.stars < 4).slice(options[1].value * 10 - 10, options[1].value * 10).sort((a, b) => b.price! - a.price!)
+        var wps = weapons.filter(w => w.type === 'sword' && w.stars < 4).slice(options[1].value ?? 1 * 10 - 10, options[1].value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
 
         var customId = 0
         for (var weapon of wps) {
@@ -973,7 +972,7 @@ export default class ShopCommand extends Command {
       break
       case 'broad_sword': {
         const locale = await import(`../../../../locales/${ctx.db.user.locale}/weapons`)
-        var wps = weapons.filter(w => w.type === 'broad_sword' && w.stars < 4).slice(options[1].value * 10 - 10, options[1].value * 10).sort((a, b) => b.price! - a.price!)
+        var wps = weapons.filter(w => w.type === 'broad_sword' && w.stars < 4).slice(options[1].value ?? 1 * 10 - 10, options[1].value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
 
         var customId = 0
         for (var weapon of wps) {
