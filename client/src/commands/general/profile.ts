@@ -70,7 +70,7 @@ export default class ProfileCommand extends Command {
     context.font = '40px regular'
     context.fillStyle = '#ffffff'
     context.fillText(user.energy.toString(), 101, 128)
-    await fillTextWithTwemoji(context, '<:granex:8744101096799186955>', 41, 84)
+    await fillTextWithTwemoji(context, '<:granex:874481096799186955>', 41, 84)
 
     context.font = '40px regular'
     context.fillStyle = '#ffffff'
