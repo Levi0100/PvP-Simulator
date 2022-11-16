@@ -112,7 +112,7 @@ export default class InventoryCommand extends Command {
               pos: pos++,
               def: armor.def,
               stars: armor.stars
-            }))
+            }), true)
           }
   
           ctx.reply(embed.build())
@@ -134,7 +134,7 @@ export default class InventoryCommand extends Command {
               pos: pos++,
               def: armor.def,
               stars: armor.stars
-            }))
+            }), true)
           }
   
           ctx.reply(embed.build())
@@ -156,7 +156,7 @@ export default class InventoryCommand extends Command {
               pos: pos++,
               def: armor.def,
               stars: armor.stars
-            }))
+            }), true)
           }
   
           ctx.reply(embed.build())
@@ -178,7 +178,7 @@ export default class InventoryCommand extends Command {
               pos: pos++,
               def: armor.def,
               stars: armor.stars
-            }))
+            }), true)
           }
   
           ctx.reply(embed.build())
@@ -200,7 +200,7 @@ export default class InventoryCommand extends Command {
               pos: pos++,
               damage: weapon.damage,
               stars: weapon.stars
-            }))
+            }), true)
           }
   
           ctx.reply(embed.build())
@@ -222,7 +222,7 @@ export default class InventoryCommand extends Command {
               pos: pos++,
               damage: weapon.damage,
               stars: weapon.stars
-            }))
+            }), true)
           }
   
           ctx.reply(embed.build())
