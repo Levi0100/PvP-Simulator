@@ -82,7 +82,8 @@ export const commands = {
     done: 'Você comprou **{item}** com sucesso!'
   },
   remove: {
-    done: 'Você removeu **{item}** do seu inventário com sucesso!'
+    done: 'Você removeu **{item}** do seu inventário com sucesso!',
+    restored: 'Energia restaurada com sucesso!'
   }
 }
 

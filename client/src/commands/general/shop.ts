@@ -72,6 +72,13 @@ export default class ShopCommand extends Command {
                 'pt-BR': 'Espada'
               },
               value: 'sword'
+            },
+            {
+              name: 'Fill energy (200 granex)',
+              name_localizations: {
+                'pt-BR': 'Encher energia (200 granex)'
+              },
+              value: 'fill_energy'
             }
           ],
           required: true
@@ -85,8 +92,7 @@ export default class ShopCommand extends Command {
           description: 'Enter the page',
           description_localizations: {
             'pt-BR': 'Insira a página'
-          },
-          required: true
+          }
         }
       ],
       client
@@ -95,6 +101,7 @@ export default class ShopCommand extends Command {
 
   async run (ctx: CommandContext) {
     const options = ctx.interaction.data.options as CommandOptions[]
+    if (!options[1].value) options[1].value = 1
     const embed = new Embed()
     .setAuthor(await this.locale.get('commands.shop.embed.author', {
       page: options[1].value
@@ -1135,6 +1142,16 @@ export default class ShopCommand extends Command {
 
         this.client?.on('interactionCreate', collector)
         setTimeout(() => this.client?.removeListener('interactionCreate', collector), 1000 * 240)
+      }
+      break
+      case 'fill_energy': {
+        const user = await User.findById(ctx.interaction.member?.id)
+        if (user!.granex < 200) return ctx.reply('helper.dont_have_granex')
+
+        user!.energy = 500
+        user?.save()
+
+        ctx.reply('commands.shop.restored')
       }
     }
   }
