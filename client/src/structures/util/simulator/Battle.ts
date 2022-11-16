@@ -34,12 +34,6 @@ export default class Battle {
     if (p2?.inUse?.pants) damage -= p2?.inUse?.pants.def
     if (damage < 0) damage = 0
 
-    if (p2!.energy <= 0) {
-      p2!.energy = 0
-      this.finished = true
-      return this.checkWinner(this.user1 as Member, this.user2 as Eris.User)
-    }
-
     p2!.energy -= damage
     if (p2!.energy < 0) p2!.energy = 0
 
@@ -54,6 +48,11 @@ export default class Battle {
     })
 
     p2?.save()
+
+    if (p2!.energy <= 0) {
+      this.finished = true
+      return this.checkWinner(this.user1 as Member, this.user2 as Eris.User)
+    }
 
     setTimeout(async () => {
       const a1 = new Button()
@@ -146,59 +145,30 @@ export default class Battle {
 
     switch (this.bet) {
       case true: {
-        if (p1!.energy <= 0) {
-          p2!.granex += this.value!
-          p2!.wins += 1
-          p1!.granex -= this.value!
-          p1!.defeats += 1
-    
-          this.ctx.edit({
-            content: await this.locale.get('commands.pvp.winner', {
-              winner: user2.mention,
-              value: this.value?.toLocaleString()
-            }),
-            components: []
-          })
-        }
-        else if (p2!.energy <= 0) {
-          p2!.granex -= this.value!
-          p2!.defeats += 1
-          p1!.granex += this.value!
-          p1!.wins += 1
-    
-          this.ctx.edit({
-            content: await this.locale.get('commands.pvp.winner', {
-              winner: user1.mention,
-              value: this.value?.toLocaleString()
-            }),
-            components: []
-          })
-        }
+        p1!.granex += this.value!
+        p1!.wins += 1
+        p2!.granex -= this.value!
+        p2!.defeats += 1
+  
+        this.ctx.edit({
+          content: await this.locale.get('commands.pvp.winner', {
+            winner: user1.mention,
+            value: this.value?.toLocaleString()
+          }),
+          components: []
+        })
       }
       break
       default: {
-        if (p1!.energy <= 0) {
-          p2!.wins += 1
-          p1!.defeats += 1
+        p1!.wins += 1
+        p2!.defeats += 1
 
-          this.ctx.edit({
-            content: await this.locale.get('commands.pvp.winner2', {
-              winner: user2.mention
-            }),
-            components: []
-          })
-        }
-        else if (p2!.energy <= 0) {
-          p2!.defeats += 1
-          p1!.wins += 1
-
-          this.ctx.edit({
-            content: await this.locale.get('commands.pvp.winner2', {
-              winner: user1.mention
-            }),
-            components: []
-          })
-        }
+        this.ctx.edit({
+          content: await this.locale.get('commands.pvp.winner2', {
+            winner: user1.mention
+          }),
+          components: []
+        })
       }
     }
 
