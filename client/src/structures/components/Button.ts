@@ -45,8 +45,8 @@ export default class Button {
   }
 
   public setEmoji (emoji: string) {
-    if (isNaN(Number(emoji))) this.emoji!.name = emoji
-    else this.emoji!.id = emoji
+    if (isNaN(Number(emoji))) this.emoji! = { name: emoji }
+    else this.emoji = { id: emoji }
     return this
   }
 
