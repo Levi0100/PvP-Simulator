@@ -1,14 +1,14 @@
 import { User } from '../../../../database'
 import { App, armors, Command, CommandContext, Embed, weapons } from '../../structures'
 
-export default class GetCommand extends Command {
+export default class ClaimCommand extends Command {
   constructor (client: App) {
     super({
-      name: 'get',
+      name: 'claim',
       name_localizations: {
         'pt-BR': 'obter'
       },
-      description: 'Get a random weapon or a random armor',
+      description: 'Claim a random weapon or a random armor',
       description_localizations: {
         'pt-BR': 'Pegue uma arma aleatória ou uma armadura aleatória'
       },
@@ -59,6 +59,7 @@ export default class GetCommand extends Command {
 
         switch (weaponOrArmor) {
           case 'armor': {
+            if (user?.inventory?.armors.length! >= 25) return ctx.reply('helper.limit_of_armors')
             var amr
 
             if (percentual <= 0.05) amr = armors.filter(armor => armor.stars === 5)
@@ -70,8 +71,6 @@ export default class GetCommand extends Command {
 
             var armor = amr[Math.floor(Math.random() * amr.length)]
             const locale = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
-
-            console.log(armor)
 
             var _armor = locale.armors[armor.type!][armor.name!]
 
@@ -108,6 +107,7 @@ export default class GetCommand extends Command {
           }
           break
           default: {
+            if (user?.inventory?.weapons.length! >= 25) return ctx.reply('helper.limit_of_weapons')
             var wps
 
             if (percentual <= 0.05) wps =  weapons.filter(weapon => weapon.stars === 5)
@@ -164,6 +164,7 @@ export default class GetCommand extends Command {
 
         switch (weaponOrArmor) {
           case 'armor': {
+            if (user?.inventory?.armors.length! >= 25) return ctx.reply('helper.limit_of_armors')
             var amr
 
             if (percentual <= 2) amr = armors.filter(armor => armor.stars === 5)
@@ -210,6 +211,7 @@ export default class GetCommand extends Command {
           }
           break
           default: {
+            if (user?.inventory?.weapons.length! >= 25) return ctx.reply('helper.limit_of_weapons')
             var wps
 
             if (percentual <= 2) wps =  weapons.filter(weapon => weapon.stars === 5)
