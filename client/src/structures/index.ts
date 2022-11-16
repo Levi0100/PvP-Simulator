@@ -9,6 +9,7 @@ import Button from './components/Button'
 import Battle from './util/simulator/Battle'
 import weapons from './util/simulator/weapons'
 import armors from './util/simulator/armors'
+import ActionRow from './components/ActionRow'
 
 export {
   App,
@@ -22,5 +23,6 @@ export {
   Button,
   Battle,
   weapons,
-  armors
+  armors,
+  ActionRow
 }
