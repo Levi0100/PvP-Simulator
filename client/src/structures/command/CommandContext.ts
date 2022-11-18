@@ -1,5 +1,5 @@
 import App from '../client/App'
-import { Guild, CommandInteraction, AdvancedMessageContent, InteractionContentEdit, AdvancedMessageContentEdit } from 'eris'
+import { Guild, CommandInteraction, AdvancedMessageContent, AdvancedMessageContentEdit } from 'eris'
 import { get } from '../../../../locales'
 
 export default class CommandContext {
@@ -17,7 +17,7 @@ export default class CommandContext {
     this.locale = locale
   }
 
-  async reply(content: string | AdvancedMessageContent | object, options?: object | any) {
+  async reply (content: string | AdvancedMessageContent | object, options?: object | any) {
     switch (typeof content) {
       case 'string': {
         if (options?.name && options?.file) {

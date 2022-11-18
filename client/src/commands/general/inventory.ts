@@ -230,13 +230,13 @@ export default class InventoryCommand extends Command {
       }
     }
     else {
-      const canvas = createCanvas(1100, 1100)
-      const _canvas = createCanvas(1100, 1100)
+      const canvas = createCanvas(2200, 1100)
+      const _canvas = createCanvas(2200, 1100)
       const context = canvas.getContext('2d')
       const _context = _canvas.getContext('2d')
 
-      const bg = await loadImage('https://imgur.com/Xnbhouw.png')
-      const template = await loadImage('https://imgur.com/1BSUWdY.png')
+      const bg = await loadImage('https://imgur.com/sGnog50.png')
+      const template = await loadImage('https://imgur.com/X2vx3Sb.png')
       const avatar = await loadImage(ctx.interaction.member!.avatarURL)
       
       _context.beginPath()
@@ -244,7 +244,7 @@ export default class InventoryCommand extends Command {
       _context.closePath()
       _context.clip()
       _context.stroke()
-      _context.drawImage(avatar, 366, 394, 368, 368)
+      _context.drawImage(avatar, 584, 640, 368, 368)
 
       var avatarImg = _canvas
       context.drawImage(bg, 0, 0, canvas.width, canvas.height)
