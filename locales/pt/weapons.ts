@@ -3,61 +3,61 @@ export const weapons = {
     steel: {
       type: 'Aço',
       name: 'Espada do',
-      stars: 1,
+      rarity: 1,
       damage: 45
     },
     light: {
       type: 'Luz',
       name: 'Espada da',
-      stars: 1,
+      rarity: 1,
       damage: 47
     },
     time: {
       type: 'Tempo',
       name: 'Espada do',
-      stars: 2,
+      rarity: 2,
       damage: 56
     },
     honor: {
       type: 'Honra',
       name: 'Espada da',
-      stars: 2,
+      rarity: 2,
       damage: 56
     },
     shadows: {
       type: 'Sombras',
       name: 'Espada das',
-      stars: 3,
+      rarity: 3,
       damage: 61
     },
     destiny: {
       type: 'Destino',
       name: 'Espada do',
-      stars: 3,
+      rarity: 3,
       damage: 60
     },
     death: {
       type: 'Morte',
       name: 'Espada da',
-      stars: 4,
+      rarity: 4,
       damage: 75
     },
     dark: {
       type: 'Negra',
       name: 'Espada',
-      stars: 4,
+      rarity: 4,
       damage: 75
     },
     angels: {
       type: 'Anjos',
       name: 'Espada dos',
-      stars: 5,
+      rarity: 5,
       damage: 125
     },
     truth: {
       type: 'Verdade',
       name: 'Espada da',
-      stars: 1,
+      rarity: 1,
       damage: 81
     }
   },
@@ -66,61 +66,61 @@ export const weapons = {
       type: 'Fogo',
       name: 'Espadão do',
       damage: 86,
-      stars: 1
+      rarity: 1
     },
     ice: {
       type: 'Gelo',
       name: 'Espadão do',
       damage: 86,
-      stars: 1
+      rarity: 1
     },
     water: {
       type: 'Água',
       name: 'Espadão da',
       damage: 88,
-      stars: 1
+      rarity: 1
     },
     glory: {
       type: 'Glória',
       name: 'Espadão da',
       damage: 92,
-      stars: 2
+      rarity: 2
     },
     courage: {
       type: 'Coragem',
       name: 'Espadão da',
       damage: 93,
-      stars: 2
+      rarity: 2
     },
     justice: {
       type: 'Justiça',
       name: 'Espadão da',
       damage: 99,
-      stars: 3
+      rarity: 3
     },
     bad_luck: {
       type: 'Má Sorte',
       name: 'Espadão da',
       damage: 98,
-      stars: 3
+      rarity: 3
     },
     force: {
       type: 'Força',
       name: 'Espadão da',
       damage: 117,
-      stars: 4
+      rarity: 4
     },
     magic_world: {
       type: 'Mundo Mágico',
       name: 'Espadão do',
       damage: 121,
-      stars: 4
+      rarity: 4
     },
     charmed: {
       type: 'Encantado',
       name: 'Espadão',
       damage: 131,
-      stars: 5
+      rarity: 5
     }
   }
 }

@@ -1,29 +1,31 @@
-import Eris, { Member } from 'eris'
+import Eris, { ComponentInteraction, Member } from 'eris'
 import { User } from '../../../../../database'
+import App from '../../client/App'
 import CommandContext from '../../command/CommandContext'
 import Button from '../../components/Button'
 
 export default class Battle {
   ctx: CommandContext
+  client: App
   user1: Member | Eris.User
   user2: Eris.User | Member
   locale: any
-  finished?: boolean
+  collector: (i: ComponentInteraction) => Promise<void>
   value?: number
   bet?: boolean
 
-  public constructor (ctx: CommandContext, user1: Member | Eris.User, user2: Eris.User | Member, locale: any, value?: number) {
+  public constructor (ctx: CommandContext, client: App, user1: Member | Eris.User, user2: Eris.User | Member, locale: any, collector: (i: ComponentInteraction) => Promise<void>, value?: number) {
     this.ctx = ctx
+    this.client = client 
     this.user1 = user1
     this.user2 = user2
     this.locale = locale
+    this.collector = collector
     this.value = value
     if (this.value) this.bet = true
   }
 
   public async initBattle () {
-    if (this.finished) return
-    
     const p1 = await User.findById(this.user1.id)
     const p2 = await User.findById(this.user2.id)
 
@@ -51,7 +53,6 @@ export default class Battle {
     p2?.save()
 
     if (p2!.energy <= 0) {
-      this.finished = true
       return this.checkWinner(this.user1 as Member, this.user2 as Eris.User)
     }
 
@@ -177,5 +178,7 @@ export default class Battle {
     p1!.inMatch = false
     p2?.save()
     p1?.save()
+
+    this.client.removeListener('interactionCreate', this.collector)
   }
 }

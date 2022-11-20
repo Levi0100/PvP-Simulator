@@ -25,7 +25,7 @@ export const commands = {
     has_been_picked: 'Você já coletou um item recentemente. Tente novamente {time}',
     def: 'Defesa',
     damage: 'Dano',
-    stars: 'Estrelas',
+    rarity: 'Raridade',
     status: 'Status do Item'
   },
   top: {
@@ -48,10 +48,13 @@ export const commands = {
     embed: {
       title: 'Seu Inventário',
       footer: 'Filtro: {filter}',
-      field: 'Posição: {pos}\nDefesa: {def}\nEstrelas: {stars}',
-      field2: 'Posição: {pos}\nDano: {damage}\nEstrelas: {stars}'
+      field: 'Posição: {pos}\nDefesa: {def}\nRaridade: {rarity}',
+      field2: 'Posição: {pos}\nDano: {damage}\nRaridade: {rarity}'
     },
-    empty: 'Vazio... igual a conta bancária do meu criador.'
+    empty: 'Vazio... igual a conta bancária do meu criador.',
+    def: 'Defesa: {def}',
+    damage: 'Dano: {damage}',
+    rarity: 'Raridade: {rarity}'
   },
   pvp: {
     needs_weapon: 'Você precisa equipar uma arma para poder iniciar uma partida PvP.',
@@ -77,7 +80,8 @@ export const commands = {
     embed: {
       author: 'Página {page}',
       title: 'LOJA',
-      field: 'Dano: {damage}\nEstrelas: {stars}'
+      field: 'Defesa: {damage}\nRaridade: {rarity}',
+      field2: 'Dano: {def}\nRaridade: {rarity}'
     },
     done: 'Você comprou **{item}** com sucesso!',
     restored: 'Energia restaurada com sucesso!'

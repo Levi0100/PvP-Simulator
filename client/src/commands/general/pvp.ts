@@ -1,4 +1,4 @@
-import { ActionRowComponents, ComponentInteraction } from 'eris'
+import { ComponentInteraction } from 'eris'
 import { User } from '../../../../database'
 import { App, Battle, Button, Command, CommandContext } from '../../structures'
 
@@ -178,8 +178,8 @@ export default class PvPCommand extends Command {
             case 'attack': {
               if (![rival.id, user.id].includes(i.member?.id)) return
               await i.deferUpdate()
-              if (i.member?.id === ctx.interaction.member?.id) new Battle(ctx, ctx.interaction.member!, _user!, this.locale, value).initBattle()
-              else new Battle(ctx, _user!, ctx.interaction.member!, this.locale, value).initBattle()
+              if (i.member?.id === ctx.interaction.member?.id) new Battle(ctx, this.client!, ctx.interaction.member!, _user!, this.locale, collector, value).initBattle()
+              else new Battle(ctx, this.client!, _user!, ctx.interaction.member!, this.locale, collector, value).initBattle()
             }
           }
         }
@@ -245,8 +245,8 @@ export default class PvPCommand extends Command {
             case 'attack': {
               if (![rival.id, user.id].includes(i.member?.id)) return
               await i.deferUpdate()
-              if (i.member?.id === ctx.interaction.member?.id) new Battle(ctx, ctx.interaction.member!, _user!, this.locale).initBattle()
-              else new Battle(ctx, _user!, ctx.interaction.member!, this.locale).initBattle()
+              if (i.member?.id === ctx.interaction.member?.id) new Battle(ctx, this.client!, ctx.interaction.member!, _user!, this.locale, collector).initBattle()
+              else new Battle(ctx, this.client!, _user!, ctx.interaction.member!, this.locale, collector).initBattle()
             }
           }
         }

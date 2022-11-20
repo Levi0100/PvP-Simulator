@@ -62,12 +62,12 @@ export default class ClaimCommand extends Command {
             if (user?.inventory?.armors.length! >= 25) return ctx.reply('helper.limit_of_armors')
             var amr
 
-            if (percentual <= 0.05) amr = armors.filter(armor => armor.stars === 5)
-            else if (percentual <= 1.05) amr =  armors.filter(armor => armor.stars === 4)
-            else if (percentual <= 7) amr =  armors.filter(armor => armor.stars === 3)
-            else if (percentual <= 39.95) amr =  armors.filter(armor => armor.stars === 2)
-            else if (percentual <= 51.95) amr =  armors.filter(armor => armor.stars === 1)
-            else amr =  armors.filter(armor => armor.stars === 1)
+            if (percentual <= 0.05) amr = armors.filter(armor => armor.rarity === 5)
+            else if (percentual <= 1.05) amr =  armors.filter(armor => armor.rarity === 4)
+            else if (percentual <= 7) amr =  armors.filter(armor => armor.rarity === 3)
+            else if (percentual <= 39.95) amr =  armors.filter(armor => armor.rarity === 2)
+            else if (percentual <= 51.95) amr =  armors.filter(armor => armor.rarity === 1)
+            else amr =  armors.filter(armor => armor.rarity === 1)
 
             var armor = amr[Math.floor(Math.random() * amr.length)]
             const locale = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
@@ -78,7 +78,7 @@ export default class ClaimCommand extends Command {
               {
                 name: armor.name,
                 type: armor.type,
-                stars: armor.stars,
+                rarity: armor.rarity,
                 def: armor.def
               }
             )
@@ -95,8 +95,8 @@ export default class ClaimCommand extends Command {
                 inline: true
               },
               {
-                name: await this.locale.get('commands.get.stars'),
-                value: armor.stars,
+                name: await this.locale.get('commands.get.rarity'),
+                value: armor.rarity,
                 inline: true
               }
             ])
@@ -110,12 +110,12 @@ export default class ClaimCommand extends Command {
             if (user?.inventory?.weapons.length! >= 25) return ctx.reply('helper.limit_of_weapons')
             var wps
 
-            if (percentual <= 0.05) wps =  weapons.filter(weapon => weapon.stars === 5)
-            else if (percentual <= 1.05) wps = weapons.filter(weapon => weapon.stars === 4)
-            else if (percentual <= 7) wps =  weapons.filter(weapon => weapon.stars === 3)
-            else if (percentual <= 39.95) wps =  weapons.filter(weapon => weapon.stars === 2)
-            else if (percentual <= 51.95) wps =  weapons.filter(weapon => weapon.stars === 1)
-            else wps =  weapons.filter(weapon => weapon.stars === 1)
+            if (percentual <= 0.05) wps =  weapons.filter(weapon => weapon.rarity === 5)
+            else if (percentual <= 1.05) wps = weapons.filter(weapon => weapon.rarity === 4)
+            else if (percentual <= 7) wps =  weapons.filter(weapon => weapon.rarity === 3)
+            else if (percentual <= 39.95) wps =  weapons.filter(weapon => weapon.rarity === 2)
+            else if (percentual <= 51.95) wps =  weapons.filter(weapon => weapon.rarity === 1)
+            else wps =  weapons.filter(weapon => weapon.rarity === 1)
 
             var weapon = wps[Math.floor(Math.random() * wps.length)]
             const locale = await import(`../../../../locales/${ctx.db.user.locale}/weapons`)
@@ -126,7 +126,7 @@ export default class ClaimCommand extends Command {
               {
                 name: weapon.name,
                 type: weapon.type,
-                stars: weapon.stars,
+                rarity: weapon.rarity,
                 damage: weapon.damage
               }
             )
@@ -143,8 +143,8 @@ export default class ClaimCommand extends Command {
                 inline: true
               },
               {
-                name: await this.locale.get('commands.get.stars'),
-                value: weapon.stars,
+                name: await this.locale.get('commands.get.rarity'),
+                value: weapon.rarity,
                 inline: true
               }
             ])
@@ -167,12 +167,12 @@ export default class ClaimCommand extends Command {
             if (user?.inventory?.armors.length! >= 25) return ctx.reply('helper.limit_of_armors')
             var amr
 
-            if (percentual <= 2) amr = armors.filter(armor => armor.stars === 5)
-            else if (percentual <= 14) amr = armors.filter(armor => armor.stars === 4)
-            else if (percentual <= 19) amr = armors.filter(armor => armor.stars === 3)
-            else if (percentual <= 25) amr = armors.filter(armor => armor.stars === 2)
-            else if (percentual <= 40) amr = armors.filter(armor => armor.stars === 1)
-            else amr = armors.filter(armor => armor.stars === 1)
+            if (percentual <= 2) amr = armors.filter(armor => armor.rarity === 5)
+            else if (percentual <= 14) amr = armors.filter(armor => armor.rarity === 4)
+            else if (percentual <= 19) amr = armors.filter(armor => armor.rarity === 3)
+            else if (percentual <= 25) amr = armors.filter(armor => armor.rarity === 2)
+            else if (percentual <= 40) amr = armors.filter(armor => armor.rarity === 1)
+            else amr = armors.filter(armor => armor.rarity === 1)
 
             var armor = amr[Math.floor(Math.random() * amr.length)]
             const locale = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
@@ -183,7 +183,7 @@ export default class ClaimCommand extends Command {
               {
                 name: armor.name,
                 type: armor.type,
-                stars: armor.stars,
+                rarity: armor.rarity,
                 def: armor.def
               }
             )
@@ -199,8 +199,8 @@ export default class ClaimCommand extends Command {
                 inline: true
               },
               {
-                name: await this.locale.get('commands.get.stars'),
-                value: armor.stars,
+                name: await this.locale.get('commands.get.rarity'),
+                value: armor.rarity,
                 inline: true
               }
             ])
@@ -214,12 +214,12 @@ export default class ClaimCommand extends Command {
             if (user?.inventory?.weapons.length! >= 25) return ctx.reply('helper.limit_of_weapons')
             var wps
 
-            if (percentual <= 2) wps =  weapons.filter(weapon => weapon.stars === 5)
-            else if (percentual <= 14) wps =  weapons.filter(weapon => weapon.stars === 4)
-            else if (percentual <= 19) wps =  weapons.filter(weapon => weapon.stars === 3)
-            else if (percentual <= 25) wps =  weapons.filter(weapon => weapon.stars === 2)
-            else if (percentual <= 40) wps =  weapons.filter(weapon => weapon.stars === 1)
-            else wps =  weapons.filter(weapon => weapon.stars === 1)
+            if (percentual <= 2) wps =  weapons.filter(weapon => weapon.rarity === 5)
+            else if (percentual <= 14) wps =  weapons.filter(weapon => weapon.rarity === 4)
+            else if (percentual <= 19) wps =  weapons.filter(weapon => weapon.rarity === 3)
+            else if (percentual <= 25) wps =  weapons.filter(weapon => weapon.rarity === 2)
+            else if (percentual <= 40) wps =  weapons.filter(weapon => weapon.rarity === 1)
+            else wps =  weapons.filter(weapon => weapon.rarity === 1)
 
             var weapon = wps[Math.floor(Math.random() * wps.length)]
             const locale = await import(`../../../../locales/${ctx.db.user.locale}/weapons`)
@@ -230,7 +230,7 @@ export default class ClaimCommand extends Command {
               {
                 name: weapon.name,
                 type: weapon.type,
-                stars: weapon.stars,
+                rarity: weapon.rarity,
                 damage: weapon.damage
               }
             )
@@ -246,8 +246,8 @@ export default class ClaimCommand extends Command {
                 inline: true
               },
               {
-                name: await this.locale.get('commands.get.stars'),
-                value: weapon.stars,
+                name: await this.locale.get('commands.get.rarity'),
+                value: weapon.rarity,
                 inline: true
               }
             ])

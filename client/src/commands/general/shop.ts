@@ -112,14 +112,14 @@ export default class ShopCommand extends Command {
     switch (options[0].value) {
       case 'helmet': {
         const locale = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
-        var ams = armors.filter(w => w.type === 'helmet' && w.stars < 4).slice(options[1]?.value ?? 1 * 10 - 10, options[1]?.value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
+        var ams = armors.filter(w => w.type === 'helmet' && w.rarity < 4).slice(options[1]?.value ?? 1 * 10 - 10, options[1]?.value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
 
         var customId = 0
         for (var armor of ams) {
           var amr = locale.armors[armor.type][armor.name]
           embed.addField(`${amr?.name} ${amr?.type} (${armor.price?.toLocaleString()} Granex)`, await this.locale.get('commands.shop.embed.field', {
-            stars: armor.stars,
-            damage: armor.def
+            rarity: armor.rarity,
+            def: armor.def
           }), true)
 
           const button = new Button()
@@ -284,14 +284,14 @@ export default class ShopCommand extends Command {
       break
       case 'chest': {
         const locale = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
-        var ams = armors.filter(w => w.type === 'chest' && w.stars < 4).slice(options[1]?.value ?? 1 * 10 - 10, options[1]?.value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
+        var ams = armors.filter(w => w.type === 'chest' && w.rarity < 4).slice(options[1]?.value ?? 1 * 10 - 10, options[1]?.value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
 
         var customId = 0
         for (var armor of ams) {
           var amr = locale.armors[armor.type][armor.name]
           embed.addField(`${amr?.name} ${amr?.type} (${armor.price?.toLocaleString()} Granex)`, await this.locale.get('commands.shop.embed.field', {
-            stars: armor.stars,
-            damage: armor.def
+            rarity: armor.rarity,
+            def: armor.def
           }), true)
 
           const button = new Button()
@@ -456,14 +456,14 @@ export default class ShopCommand extends Command {
       break
       case 'pants': {
         const locale = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
-        var ams = armors.filter(w => w.type === 'pants' && w.stars < 4).slice(options[1]?.value ?? 1 * 10 - 10, options[1]?.value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
+        var ams = armors.filter(w => w.type === 'pants' && w.rarity < 4).slice(options[1]?.value ?? 1 * 10 - 10, options[1]?.value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
 
         var customId = 0
         for (var armor of ams) {
           var amr = locale.armors[armor.type][armor.name]
           embed.addField(`${amr?.name} ${amr?.type} (${armor.price?.toLocaleString()} Granex)`, await this.locale.get('commands.shop.embed.field', {
-            stars: armor.stars,
-            damage: armor.def
+            rarity: armor.rarity,
+            def: armor.def
           }), true)
 
           const button = new Button()
@@ -628,14 +628,14 @@ export default class ShopCommand extends Command {
       break
       case 'boots': {
         const locale = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
-        var ams = armors.filter(w => w.type === 'boots' && w.stars < 4).slice(options[1]?.value ?? 1 * 10 - 10, options[1]?.value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
+        var ams = armors.filter(w => w.type === 'boots' && w.rarity < 4).slice(options[1]?.value ?? 1 * 10 - 10, options[1]?.value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
 
         var customId = 0
         for (var armor of ams) {
           var amr = locale.armors[armor.type][armor.name]
           embed.addField(`${amr?.name} ${amr?.type} (${armor.price?.toLocaleString()} Granex)`, await this.locale.get('commands.shop.embed.field', {
-            stars: armor.stars,
-            damage: armor.def
+            rarity: armor.rarity,
+            def: armor.def
           }), true)
 
           const button = new Button()
@@ -800,13 +800,13 @@ export default class ShopCommand extends Command {
       break
       case 'sword': {
         const locale = await import(`../../../../locales/${ctx.db.user.locale}/weapons`)
-        var wps = weapons.filter(w => w.type === 'sword' && w.stars < 4).slice(options[1]?.value ?? 1 * 10 - 10, options[1]?.value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
+        var wps = weapons.filter(w => w.type === 'sword' && w.rarity < 4).slice(options[1]?.value ?? 1 * 10 - 10, options[1]?.value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
 
         var customId = 0
         for (var weapon of wps) {
           var wp = locale.weapons[weapon.type][weapon.name]
-          embed.addField(`${wp?.name} ${wp?.type} (${weapon.price?.toLocaleString()} Granex)`, await this.locale.get('commands.shop.embed.field', {
-            stars: weapon.stars,
+          embed.addField(`${wp?.name} ${wp?.type} (${weapon.price?.toLocaleString()} Granex)`, await this.locale.get('commands.shop.embed.field2', {
+            rarity: weapon.rarity,
             damage: weapon.damage
           }), true)
 
@@ -972,13 +972,13 @@ export default class ShopCommand extends Command {
       break
       case 'broad_sword': {
         const locale = await import(`../../../../locales/${ctx.db.user.locale}/weapons`)
-        var wps = weapons.filter(w => w.type === 'broad_sword' && w.stars < 4).slice(options[1]?.value ?? 1 * 10 - 10, options[1]?.value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
+        var wps = weapons.filter(w => w.type === 'broad_sword' && w.rarity < 4).slice(options[1]?.value ?? 1 * 10 - 10, options[1]?.value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
 
         var customId = 0
         for (var weapon of wps) {
           var wp = locale.weapons[weapon.type][weapon.name]
-          embed.addField(`${wp?.name} ${wp?.type} (${weapon.price?.toLocaleString()} Granex)`, await this.locale.get('commands.shop.embed.field', {
-            stars: weapon.stars,
+          embed.addField(`${wp?.name} ${wp?.type} (${weapon.price?.toLocaleString()} Granex)`, await this.locale.get('commands.shop.embed.field2', {
+            rarity: weapon.rarity,
             damage: weapon.damage
           }), true)
 

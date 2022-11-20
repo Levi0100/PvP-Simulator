@@ -24,7 +24,7 @@ export const commands = {
     has_been_picked: 'You already collected a item recently. Try again {time}',
     def: 'Defense',
     damage: 'Damage',
-    stars: 'Stars',
+    rarity: 'Rarity',
     status: 'Item Status'
   },
   top: {
@@ -47,10 +47,13 @@ export const commands = {
     embed: {
       title: 'Your inventory',
       footer: 'Filtro: {filter}',
-      field: 'Position: {pos}\nDefense: {def}\nStars: {stars}',
-      field2: 'Position: {pos}\nDamage: {damage}\nStars: {stars}'
+      field: 'Position: {pos}\nDefense: {def}\nRarity: {rarity}',
+      field2: 'Position: {pos}\nDamage: {damage}\nRarity: {rarity}'
     },
-    empty: 'Empty... like my creator\'s bank account.'
+    empty: 'Empty... like my creator\'s bank account.',
+    def: 'Defense: {def}',
+    damage: 'Damage: {damage}',
+    rarity: 'Rarity: {rarity}'
   },
   pvp: {
     needs_weapon: 'You need equip a weapon to start a PvP match.',
@@ -76,7 +79,8 @@ export const commands = {
     embed: {
       author: 'Page {page}',
       title: 'SHOP',
-      field: 'Damage: {damage}\nStars: {stars}'
+      field: 'Damage: {damage}\nRarity: {rarity}',
+      field2: 'Defense: {def}\nRarity: {rarity}'
     },
     done: 'You bought **{item}** successfully!',
     restored: 'Energy restored successfully!'

@@ -3,31 +3,31 @@ export const armors = {
     angels: {
       type: 'Anjos',
       name: 'Capacete dos',
-      stars: 5,
+      rarity: 5,
       def: 8
     },
     dark: {
       type: 'Sombras',
       name: 'Capacate das',
-      stars: 4,
+      rarity: 4,
       def: 6
     },
     blood: {
       type: 'Sangue',
       name: 'Capacete de',
-      stars: 3,
+      rarity: 3,
       def: 5
     },
     golden: {
       type: 'Dourado',
       name: 'Capacete',
-      stars: 2,
+      rarity: 2,
       def: 5
     },
     bronze: {
       type: 'Bronze',
       name: 'Capacete de',
-      stars: 1,
+      rarity: 1,
       def: 1
     }
   },
@@ -35,37 +35,37 @@ export const armors = {
     angels: {
       type: 'Anjos',
       name: 'Peitoral dos',
-      stars: 5,
+      rarity: 5,
       def: 8
     },
     dark: {
       type: 'Sombras',
       name: 'Peitoral das',
-      stars: 4,
+      rarity: 4,
       def: 6
     },
     death: {
       type: 'Morte',
       name: 'Peitoral da',
-      stars: 4,
+      rarity: 4,
       def: 6
     },
     blood: {
       type: 'Sangue',
       name: 'Peitoral de',
-      stars: 3,
+      rarity: 3,
       def: 5
     },
     golden: {
       type: 'Dourado',
       name: 'Peitoral',
-      stars: 2,
+      rarity: 2,
       def: 5
     },
     bronze: {
       type: 'Bronze',
       name: 'Peitoral de',
-      stars: 1,
+      rarity: 1,
       def: 1
     }
   },
@@ -73,31 +73,31 @@ export const armors = {
     angels: {
       type: 'Anjos',
       name: 'Calça dos',
-      stars: 5,
+      rarity: 5,
       def: 5
     },
     dark: {
       type: 'Sombras',
       name: 'Calça das',
-      stars: 4,
+      rarity: 4,
       def: 3
     },
     blood: {
       type: 'Sangue',
       name: 'Calça de',
-      stars: 3,
+      rarity: 3,
       def: 5
     },
     golden: {
       type: 'Dourada',
       name: 'Calça',
-      stars: 2,
+      rarity: 2,
       def: 5
     },
     bronze: {
       type: 'Bronze',
       name: 'Calça de',
-      stars: 1,
+      rarity: 1,
       def: 1
     }
   },
@@ -105,31 +105,31 @@ export const armors = {
     angels: {
       type: 'Anjos',
       name: 'Bota dos',
-      stars: 5,
+      rarity: 5,
       def: 3
     },
     dark: {
       type: 'Sombras',
       name: 'Bota das',
-      stars: 4,
+      rarity: 4,
       def: 2
     },
     blood: {
       type: 'Sangue',
       name: 'Botas de',
-      stars: 3,
+      rarity: 3,
       def: 5
     },
     golden: {
       type: 'Douradas',
       name: 'Botas',
-      stars: 2,
+      rarity: 2,
       def: 5
     },
     bronze: {
       type: 'Bronze',
       name: 'Botas de',
-      stars: 1,
+      rarity: 1,
       def: 1
     }
   }
