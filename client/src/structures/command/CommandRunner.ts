@@ -1,8 +1,10 @@
 import App from '../client/App'
-import Eris, { CommandInteraction } from 'eris'
+import Eris, { CommandInteraction, TextChannel, WebhookPayload } from 'eris'
 import { User } from '../../../../database'
 import CommandContext from './CommandContext'
 import { get } from '../../../../locales'
+import Logger from '../util/Logger'
+import Embed from '../embed/Embed'
 
 export default class CommandRunner {
   client: App
@@ -69,7 +71,7 @@ export default class CommandRunner {
         return ctx.guild.members.get(member.replace(/[<@!>]/g, ''))
       }
       catch (err) {
-        //new Logger(this.client).error(err)
+        new Logger(this.client).error(err as Error)
       }
     }
     command.getUser = async (user: string) => {
@@ -77,15 +79,49 @@ export default class CommandRunner {
         return this.client.getRESTUser(user.replace(/[<@!>]/g, ''))
       }
       catch (err) {
-        //new Logger(this.client).error(err)
+        new Logger(this.client).error(err as Error)
       }
     }
 
     command.run(ctx)
-    .catch((error: any) => {
-      //new Logger(this.client).error(error)
-      console.error(error)
+    .catch((error: Error) => {
+      new Logger(this.client).error(error)
       ctx.reply('helper.error', { error })
+    })
+    .then(async () => {
+      const embed = new Embed()
+      .setAuthor(`${ctx.interaction.member?.username}#${ctx.interaction.member?.discriminator}`, ctx.interaction.member?.avatarURL)
+      .setTitle(`The command \`${command.name}\` has been executed on \`${ctx.guild.name}\``)
+      .addFields([
+        {
+          name: 'Server ID',
+          value: `\`${ctx.guild.id}\``,
+          inline: true
+        },
+        {
+          name: 'Server Owner',
+          value: `\`${ctx.guild.ownerID}\``,
+          inline: true
+        },
+        {
+          name: 'Author',
+          value: `\`${ctx.interaction.member?.username}#${ctx.interaction.member?.discriminator} (${ctx.interaction.member?.id})\``,
+          inline: true
+        }
+      ])
+      .setThumbnail(ctx.guild.iconURL!)
+      .setTimestamp()
+
+      const channel = await this.client.getRESTChannel('1044446654000009217') as TextChannel
+      const webhooks = await channel.getWebhooks()
+      var webhook = webhooks.filter(w => w.name === `${this.client.user.username} Logger`)[0]
+      if (!webhook) webhook = await channel.createWebhook({ name: `${this.client.user.username} Logger` })
+  
+      this.client.executeWebhook(webhook.id, webhook.token!, {
+        embed,
+        avatarURL: this.client.user.avatarURL,
+        username: `${this.client.user.username} Logger`
+      } as WebhookPayload)
     })
   }
 }

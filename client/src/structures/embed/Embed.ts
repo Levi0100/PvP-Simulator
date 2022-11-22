@@ -87,7 +87,7 @@ class Embed {
     return this
   }
 
-  public setTimestamp (timestamp: Date) {
+  public setTimestamp (timestamp?: Date) {
     this.timestamp = timestamp ? timestamp : new Date()
     return this
   }
