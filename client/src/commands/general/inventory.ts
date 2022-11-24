@@ -241,11 +241,11 @@ export default class InventoryCommand extends Command {
       const template = await loadImage('https://imgur.com/X2vx3Sb.png')
       const avatar = await loadImage(ctx.interaction.member!.avatarURL)
 
-      /*_context.beginPath()
-      _context.arc(770, 800, 1000, 0, (Math.PI / 180) * 360, true)
+      _context.beginPath()
+      _context.arc(1100, 580, 200, 0, Math.PI * 2, true)
       _context.closePath()
       _context.clip()
-      _context.stroke()*/
+      _context.stroke()
       _context.drawImage(avatar, 914, 400, 368, 368)
 
       var avatarImg = _canvas
