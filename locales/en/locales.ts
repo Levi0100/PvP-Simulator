@@ -41,7 +41,7 @@ export const commands = {
   },
   equip: {
     dont_have_this: 'You don\'t have this item in your inventory. Verify your inventory with </inventory:1035461161451262044> and try again.',
-    equiped: 'You was equip **{item}** successfully!'
+    equiped: 'You equiped **{item}** successfully!'
   },
   inventory: {
     embed: {
@@ -79,8 +79,8 @@ export const commands = {
     embed: {
       author: 'Page {page}',
       title: 'SHOP',
-      field: 'Damage: {damage}\nRarity: {rarity}',
-      field2: 'Defense: {def}\nRarity: {rarity}'
+      field: 'Defense: {def}\nRarity: {rarity}',
+      field2: 'Damage: {damage}\nRarity: {rarity}'
     },
     done: 'You bought **{item}** successfully!',
     restored: 'Energy restored successfully!'

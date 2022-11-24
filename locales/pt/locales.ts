@@ -80,8 +80,8 @@ export const commands = {
     embed: {
       author: 'Página {page}',
       title: 'LOJA',
-      field: 'Defesa: {damage}\nRaridade: {rarity}',
-      field2: 'Dano: {def}\nRaridade: {rarity}'
+      field: 'Defesa: {def}\nRaridade: {rarity}',
+      field2: 'Dano: {damage}\nRaridade: {rarity}'
     },
     done: 'Você comprou **{item}** com sucesso!',
     restored: 'Energia restaurada com sucesso!'
