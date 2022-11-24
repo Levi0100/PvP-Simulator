@@ -9,8 +9,7 @@ export default [
     name: 'angels',
     type: 'chest',
     rarity: 5,
-    def: 22,
-    price: 3200
+    def: 22
   },
   {
     name: 'angels',
@@ -77,7 +76,7 @@ export default [
     type: 'helmet',
     rarity: 3,
     def: 10,
-    price: 3200
+    price: 6900
   },
   {
     name: 'blood',
@@ -105,14 +104,14 @@ export default [
     type: 'helmet',
     rarity: 2,
     def: 7,
-    price: 6300
+    price: 6000
   },
   {
     name: 'golden',
     type: 'chest',
     rarity: 2,
     def: 7,
-    price: 6300
+    price: 6000
   },
   {
     name: 'golden',
@@ -133,27 +132,27 @@ export default [
     type: 'helmet',
     rarity: 1,
     def: 5,
-    price: 6000
+    price: 3200
   },
   {
     name: 'bronze',
     type: 'chest',
     rarity: 1,
     def: 5,
-    price: 6000
+    price: 3200
   },
   {
     name: 'bronze',
     type: 'pants',
     rarity: 1,
     def: 2,
-    price: 3400
+    price: 3000
   },
   {
     name: 'bronze',
     type: 'boots',
     rarity: 1,
     def: 2,
-    price: 3400
+    price: 3000
   }
 ]
