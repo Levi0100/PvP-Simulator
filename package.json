@@ -2,7 +2,7 @@
   "name": "pvp-simulator",
   "version": "1.0.0",
   "description": "",
-  "main": "init.js",
+  "main": "main.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx tsc && node dist/main.js"
