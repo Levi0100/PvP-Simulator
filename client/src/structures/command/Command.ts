@@ -77,6 +77,7 @@ interface CommandOptions {
   botPermissions?: Array<'createInstantInvite' | 'kickMembers' | 'banMembers' | 'administrator' | 'manageChannels' | 'manageGuild' | 'addReactions' | 'sendMessages' | 'sendTTSMessages' | 'manageMessages' | 'embedLinks' | 'attachFiles' | 'readMessageHistory' | 'mentionEveryone' | 'voiceUseVAD' | 'changeNickname' | 'manageNicknames' | 'manageRoles' | 'manageEmojisAndStickers' | 'useExternalEmojis' | 'viewAuditLog' | 'voicePrioritySpeaker' | 'voiceStream' | 'viewChannel' | 'viewGuildInsights' | 'voiceConnect' | 'voiceSpeak' | 'voiceMuteMembers' | 'voiceRequestToSpeak' | 'voiceDeafenMembers' | 'voiceMoveMembers' | 'manageWebhooks' | 'useApplicationCommands' | 'createPrivateThreads' | 'createPublicThreads' | 'useExternalStickers' | 'manageThreads' | 'sendMessagesInThreads' | 'useEmbeddedActivities' | 'moderateMembers' | 'manageEvents'>
   client?: App
   category?: string
+  ephemeral?: boolean
 }
 
 class Command {
@@ -97,6 +98,7 @@ class Command {
     get: (content: string, args?: object) => Promise<string>
   }
   category?: string
+  ephemeral?: boolean
 
   constructor (options: CommandOptions) {
     this.name = options.name
@@ -108,6 +110,7 @@ class Command {
     this.permissions = options.permissions
     this.botPermissions = options.botPermissions
     this.category = options.category
+    this.ephemeral = options.ephemeral
   }
 }
 
