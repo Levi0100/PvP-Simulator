@@ -32,7 +32,7 @@ export default class GuildCreateListener extends Listener {
     .setThumbnail(guild.iconURL!)
     .setTimestamp()
 
-    const channel = await this.client?.getRESTChannel('1040850696834125824') as TextChannel
+    const channel = await this.client?.getRESTChannel(process.env.GUILDS_LOG) as TextChannel
     const webhooks = await channel.getWebhooks()
     var webhook = webhooks.filter(w => w.name === `${this.client?.user.username} Logger`)[0]
     if (!webhook) webhook = await channel.createWebhook({ name: `${this.client?.user.username} Logger` })
