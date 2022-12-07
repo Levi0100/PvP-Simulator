@@ -1,5 +1,5 @@
 import App from '../client/App'
-import { Guild, CommandInteraction, AdvancedMessageContent, AdvancedMessageContentEdit } from 'eris'
+import { Guild, CommandInteraction, AdvancedMessageContent, AdvancedMessageContentEdit, Member, User } from 'eris'
 import { get } from '../../../../locales'
 
 export default class CommandContext {
@@ -8,6 +8,8 @@ export default class CommandContext {
   guild: Guild
   interaction: CommandInteraction
   locale: any
+  member: Member
+  author: User
 
   constructor(client: App, db: any, guild: Guild, interaction: CommandInteraction, locale: any) {
     this.client = client
@@ -15,6 +17,8 @@ export default class CommandContext {
     this.guild = guild
     this.interaction = interaction
     this.locale = locale
+    this.member = this.interaction.member!
+    this.author = this.client.users.get(this.member.id)!
   }
 
   async reply (content: string | AdvancedMessageContent | object, options?: object | any) {
