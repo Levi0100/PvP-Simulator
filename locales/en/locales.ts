@@ -87,6 +87,10 @@ export const commands = {
   },
   remove: {
     done: 'You removed **{item}** from your inventory successfully!'
+  },
+  background: {
+    already_sent: 'You already sent a background for analysis. Wait until it be verified and try again',
+    done: 'Background sent to analysis successfully! O prazo de verificação é de até 24 horas pós envio.\nIt is recommended that you log into our server to follow the process.'
   }
 }
 
@@ -101,5 +105,6 @@ export const helper = {
   dont_have_granex: 'You don\'t have this Granex amount. View your balance with </granex:1032759218232627322> and try again.',
   dont_have_granex2: '{user} doesn\'t have this Granex amount.',
   limit_of_weapons: 'You have reached the maximum limit of weapons supported so far. Try to remove any useless weapons from your inventory with </remove sword:1042512580083724419> or </remove broad_sword:1042512580083724419> and try again.',
-  limit_of_armors: 'You have reached the maximum limit of armors supported so far. Try to remove any useless armors from your inventory with </remove helmet:1042512580083724419>, </remove chest:1042512580083724419>, </remove pants:1042512580083724419>, or </remove boots:1042512580083724419> and try again.'
+  limit_of_armors: 'You have reached the maximum limit of armors supported so far. Try to remove any useless armors from your inventory with </remove helmet:1042512580083724419>, </remove chest:1042512580083724419>, </remove pants:1042512580083724419>, or </remove boots:1042512580083724419> and try again.',
+  server: 'Comunidade e Suporte'
 }
