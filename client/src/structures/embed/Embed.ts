@@ -1,13 +1,9 @@
+import { EmbedField } from 'eris'
+
 interface EmbedAuthorOptions {
   name: string
   icon_url?: string
   url?: string
-}
-
-interface EmbedFieldOption {
-  name: string
-  value: string | number
-  inline?: boolean
 }
 
 interface EmbedImageOption {
@@ -24,7 +20,7 @@ class Embed {
   title?: string
   url?: string
   description?: string
-  fields?: EmbedFieldOption[]
+  fields?: EmbedField[]
   image?: EmbedImageOption
   thumbnail?: EmbedImageOption
   timestamp?: Date
@@ -55,7 +51,7 @@ class Embed {
     return this
   }
 
-  public addField (name: string, value: string | number, inline?: boolean) {
+  public addField (name: string, value: string, inline?: boolean) {
     this.fields?.push(
       {
         name,
@@ -66,7 +62,7 @@ class Embed {
     return this
   }
 
-  public addFields (fields: EmbedFieldOption[]) {
+  public addFields (fields: EmbedField[]) {
     fields.forEach(field => {
       this.fields?.push(
         {
