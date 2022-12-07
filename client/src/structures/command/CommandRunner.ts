@@ -27,12 +27,13 @@ export default class CommandRunner {
     }
     const g = this.client.guilds.get(this.interaction.guildID!) as Eris.Guild
     const ctx = new CommandContext(this.client, db, g, this.interaction, this.locale)
-    
-    await this.interaction.defer()
 
     const command = this.client.commands.get(this.interaction.data.name)
 
     if (!command) return
+
+    if (command.ephemeral) await this.interaction.defer(64)
+    else await this.interaction.defer()
 
     if (command.permissions) {
       var arrayPerm: any[] = []
@@ -55,7 +56,7 @@ export default class CommandRunner {
       }
 
       if (arrayPerm[0]) return ctx.reply('helper.permissions.bot', {
-        permissions: command.permissions.map((perm: string) => `\`${permissions[perm]}\``).join(', ')
+        permissions: command.permissions!.map((perm: string) => `\`${permissions[perm]}\``).join(', ')
       })
     }
 
@@ -66,22 +67,6 @@ export default class CommandRunner {
         return await get(this.locale, content, args)
       }
     }
-    command.getMember = (member: string) => {
-      try {
-        return ctx.guild.members.get(member.replace(/[<@!>]/g, ''))
-      }
-      catch (err) {
-        new Logger(this.client).error(err as Error)
-      }
-    }
-    command.getUser = async (user: string) => {
-      try {
-        return this.client.getRESTUser(user.replace(/[<@!>]/g, ''))
-      }
-      catch (err) {
-        new Logger(this.client).error(err as Error)
-      }
-    }
 
     command.run(ctx)
     .catch((error: Error) => {
@@ -90,7 +75,7 @@ export default class CommandRunner {
     })
     .then(async () => {
       const embed = new Embed()
-      .setAuthor(`${ctx.interaction.member?.username}#${ctx.interaction.member?.discriminator}`, ctx.interaction.member?.avatarURL)
+      .setAuthor(`${ctx.member.username}#${ctx.member.discriminator}`, ctx.member.avatarURL)
       .setTitle(`The command \`${command.name}\` has been executed on \`${ctx.guild.name}\``)
       .addFields([
         {
@@ -105,14 +90,14 @@ export default class CommandRunner {
         },
         {
           name: 'Author',
-          value: `\`${ctx.interaction.member?.username}#${ctx.interaction.member?.discriminator} (${ctx.interaction.member?.id})\``,
+          value: `\`${ctx.member.username}#${ctx.member.discriminator} (${ctx.member.id})\``,
           inline: true
         }
       ])
       .setThumbnail(ctx.guild.iconURL!)
       .setTimestamp()
 
-      const channel = await this.client.getRESTChannel('1044446654000009217') as TextChannel
+      const channel = await this.client.getRESTChannel(process.env.COMMANDS_LOG) as TextChannel
       const webhooks = await channel.getWebhooks()
       var webhook = webhooks.filter(w => w.name === `${this.client.user.username} Logger`)[0]
       if (!webhook) webhook = await channel.createWebhook({ name: `${this.client.user.username} Logger` })
