@@ -12,20 +12,17 @@ class App extends Client {
     this.commands = new Map()
   }
 
-  async init () {
-    var modules = readdirSync(path.join(__dirname, '../../commands'))
-    modules.forEach(module => {
-      var commands = readdirSync(path.join(__dirname, `../../commands/${module}`))
-      commands.forEach(async cmd => {
-        const Command = await import(path.join(__dirname, `../../commands/${module}/${cmd}`))
-        const command = new Command.default(this)
+  async init() {
+    var commands = readdirSync(path.join(__dirname, '../../commands'))
+    commands.forEach(async cmd => {
+      const Command = await import(path.join(__dirname, `../../commands/${cmd}`))
+      const command = new Command.default(this)
 
-        this.commands.set(command.name, command)
-      })
+      this.commands.set(command.name, command)
     })
 
-    var _modules = readdirSync(path.join(__dirname, '../../listeners'))
-    _modules.forEach(module => {
+    var modules = readdirSync(path.join(__dirname, '../../listeners'))
+    modules.forEach(module => {
       var listeners = readdirSync(path.join(__dirname, `../../listeners/${module}`))
       listeners.forEach(async listen => {
         const Listener = await import(path.join(__dirname, `../../listeners/${module}/${listen}`))
