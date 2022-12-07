@@ -53,7 +53,8 @@ const user = new Schema({
   defeats: {
     type: Number,
     default: 0
-  }
+  },
+  alreadySentBackground: Boolean
 })
 
 export default model('users', user)
