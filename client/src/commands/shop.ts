@@ -1,6 +1,6 @@
 import { ComponentInteraction } from 'eris'
-import { User } from '../../../../database'
-import { ActionRow, App, armors, Button, Command, CommandContext, Embed, weapons } from '../../structures'
+import { User } from '../../../database'
+import { ActionRow, App, armors, Button, Command, CommandContext, Embed, weapons } from '../structures'
 
 interface CommandOptions {
   name: string
@@ -95,6 +95,7 @@ export default class ShopCommand extends Command {
           }
         }
       ],
+      category: 'general',
       client
     })
   }
@@ -1144,7 +1145,7 @@ export default class ShopCommand extends Command {
       }
       break
       case 'fill_energy': {
-        const user = await User.findById(ctx.interaction.member?.id)
+        const user = await User.findById(ctx.member.id)
         if (user!.granex < 200) return ctx.reply('helper.dont_have_granex')
 
         user!.energy = 500

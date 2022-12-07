@@ -1,4 +1,4 @@
-import { App, Command, CommandContext } from '../../structures'
+import { App, Command, CommandContext } from '../structures'
 
 export default class PingCommand extends Command {
   constructor (client: App) {

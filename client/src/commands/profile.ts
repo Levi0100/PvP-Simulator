@@ -1,6 +1,6 @@
 import { createCanvas, loadImage } from 'canvas'
-import { User } from '../../../../database'
-import { App, Command, CommandContext } from '../../structures'
+import { User } from '../../../database'
+import { App, Command, CommandContext } from '../structures'
 import { fillTextWithTwemoji } from 'node-canvas-with-twemoji-and-discord-emoji'
 
 interface CommandOptions {
@@ -33,6 +33,7 @@ export default class ProfileCommand extends Command {
           }
         }
       ],
+      category: 'general',
       client
     })
   }
@@ -43,7 +44,7 @@ export default class ProfileCommand extends Command {
     const context = canvas.getContext('2d')
     const _canvas = createCanvas(1920, 1080)
     const _context = _canvas.getContext('2d')
-    const _user = await this.client?.getRESTUser((options ? options![0].value : ctx.interaction.member?.id) as string)
+    const _user = await this.client?.getRESTUser((options ? options![0].value : ctx.member.id) as string)
     const user = await User.findById(_user?.id)
     if (!user) return ctx.reply('helper.user_is_not_in_db')
 

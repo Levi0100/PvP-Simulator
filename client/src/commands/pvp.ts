@@ -1,6 +1,6 @@
 import { ComponentInteraction } from 'eris'
-import { User } from '../../../../database'
-import { App, Battle, Button, Command, CommandContext } from '../../structures'
+import { User } from '../../../database'
+import { App, Battle, Button, Command, CommandContext } from '../structures'
 
 interface CommandOptions {
   type: number
@@ -97,7 +97,7 @@ export default class PvPCommand extends Command {
 
   async run (ctx: CommandContext) {
     const option = ctx.interaction.data.options![0] as CommandOptions
-    const user = await User.findById(ctx.interaction.member?.id)
+    const user = await User.findById(ctx.member.id)
     const rival = await User.findById(option.options[0].options[0].value)
     const _user = this.client?.users.get(rival?.id)
     const value = option.options[0].options[1]?.value as number
@@ -126,7 +126,7 @@ export default class PvPCommand extends Command {
         .setCustomId('accept-pvp')
 
         const msg: any = await ctx.reply(button.build(await this.locale.get('commands.pvp.request', {
-          author: ctx.interaction.member?.mention,
+          author: ctx.member.mention,
           value: value.toLocaleString(),
           user: _user?.mention
         })))
@@ -178,7 +178,7 @@ export default class PvPCommand extends Command {
             case 'attack': {
               if (![rival.id, user.id].includes(i.member?.id)) return
               await i.deferUpdate()
-              if (i.member?.id === ctx.interaction.member?.id) new Battle(ctx, this.client!, ctx.interaction.member!, _user!, this.locale, collector, value).initBattle()
+              if (i.member?.id === ctx.member.id) new Battle(ctx, this.client!, ctx.interaction.member!, _user!, this.locale, collector, value).initBattle()
               else new Battle(ctx, this.client!, _user!, ctx.interaction.member!, this.locale, collector, value).initBattle()
             }
           }
@@ -194,7 +194,7 @@ export default class PvPCommand extends Command {
         .setCustomId('accept-pvp')
 
         const msg: any = await ctx.reply(button.build(await this.locale.get('commands.pvp.request2', {
-          author: ctx.interaction.member?.mention,
+          author: ctx.member.mention,
           user: _user?.mention
         })))
 
@@ -245,7 +245,7 @@ export default class PvPCommand extends Command {
             case 'attack': {
               if (![rival.id, user.id].includes(i.member?.id)) return
               await i.deferUpdate()
-              if (i.member?.id === ctx.interaction.member?.id) new Battle(ctx, this.client!, ctx.interaction.member!, _user!, this.locale, collector).initBattle()
+              if (i.member?.id === ctx.member.id) new Battle(ctx, this.client!, ctx.interaction.member!, _user!, this.locale, collector).initBattle()
               else new Battle(ctx, this.client!, _user!, ctx.interaction.member!, this.locale, collector).initBattle()
             }
           }

@@ -1,5 +1,5 @@
-import { User } from '../../../../database'
-import { Command, CommandContext } from '../../structures'
+import { User } from '../../../database'
+import { Command, CommandContext } from '../structures'
 
 interface CommandOptions {
   name: string
@@ -58,8 +58,8 @@ export default class ConfigCommand extends Command {
   }
 
   async run (ctx: CommandContext) {
-    const user = await User.findById(ctx.interaction.member?.id) || new User({
-      _id: ctx.interaction.member?.id
+    const user = await User.findById(ctx.member.id) || new User({
+      _id: ctx.member.id
     })
     const option = ctx.interaction.data.options?.find(index => index) as CommandOptions
     const { options } = ctx.interaction.data.options?.find(index => index) as CommandOptions

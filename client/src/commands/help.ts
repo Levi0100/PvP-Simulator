@@ -1,4 +1,4 @@
-import { App, Command, CommandContext, Embed } from '../../structures'
+import { App, Command, CommandContext, Embed } from '../structures'
 import translate from '@iamtraction/google-translate'
 
 export default class HelpCommand extends Command {

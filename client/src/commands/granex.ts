@@ -1,5 +1,5 @@
-import { User } from '../../../../database'
-import { App, Command, CommandContext } from '../../structures'
+import { User } from '../../../database'
+import { App, Command, CommandContext } from '../structures'
 
 interface CommandOptions {
   name?: string
@@ -44,16 +44,16 @@ export default class GranexCommand extends Command {
     )
 
     const options = ctx.interaction.data.options as CommandOptions[]
-    const _user = await this.client?.getRESTUser(options ? options[0].value! : ctx.interaction.member?.id!)
+    const _user = await this.client?.getRESTUser(options ? options[0].value! : ctx.member.id!)
     
     users.sort((a, b) => b.granex - a.granex)
     var pos = users.findIndex(u => u.id === _user?.id) + 1
 
-    const user = await User.findById(options ? options[0].value : ctx.interaction.member?.id)
+    const user = await User.findById(options ? options[0].value : ctx.member.id)
 
     if (!user) return ctx.reply('helper.user_is_not_in_db')
 
-    ctx.reply(user?.id == ctx.interaction.member?.id ? 'commands.granex.reply' : 'commands.granex.reply2', {
+    ctx.reply(user?.id == ctx.member.id ? 'commands.granex.reply' : 'commands.granex.reply2', {
       user: _user?.mention,
       pos,
       granex: user.granex.toLocaleString(),

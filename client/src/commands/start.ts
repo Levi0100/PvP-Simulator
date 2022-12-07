@@ -1,5 +1,5 @@
-import { User } from '../../../../database'
-import { Command, CommandContext } from '../../structures'
+import { User } from '../../../database'
+import { Command, CommandContext } from '../structures'
 
 export default class StartCommand extends Command {
   constructor () {
@@ -17,12 +17,12 @@ export default class StartCommand extends Command {
   }
 
   async run (ctx: CommandContext) {
-    const user = await User.findById(ctx.interaction.member?.id)
+    const user = await User.findById(ctx.member.id)
     if (user) return ctx.reply('commands.start.you_already_created_data')
 
     new User(
       {
-        _id: ctx.interaction.member?.id
+        _id: ctx.member.id
       }
     )
     .save()

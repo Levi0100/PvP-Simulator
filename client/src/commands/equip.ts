@@ -1,5 +1,5 @@
-import { User } from '../../../../database'
-import { Command, CommandContext } from '../../structures'
+import { User } from '../../../database'
+import { Command, CommandContext } from '../structures'
 
 interface SubCommandOptions {
   value: number
@@ -208,7 +208,7 @@ export default class EquipCommand extends Command {
   async run (ctx: CommandContext) {
     const { armors } = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
     const { weapons } = await import(`../../../../locales/${ctx.db.user.locale}/weapons`)
-    const user: any = await User.findById(ctx.interaction.member?.id)
+    const user: any = await User.findById(ctx.member.id)
     const option = ctx.interaction.data.options![0] as CommandOptions
 
     switch (option.name) {

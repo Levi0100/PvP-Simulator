@@ -1,5 +1,5 @@
-import { User } from '../../../../database'
-import { Command, CommandContext } from '../../structures'
+import { User } from '../../../database'
+import { Command, CommandContext } from '../structures'
 
 interface CommandOptions {
   type: number
@@ -31,13 +31,14 @@ export default class ConvertCommand extends Command {
           },
           required: true
         }
-      ]
+      ],
+      category: 'general'
     })
   }
 
   async run (ctx: CommandContext) {
     const option = ctx.interaction.data.options![0] as CommandOptions
-    const user = await User.findById(ctx.interaction.member?.id)
+    const user = await User.findById(ctx.member.id)
 
     if (option.value > user!.refinedGranex) return ctx.reply('helper.dont_have_granex')
 

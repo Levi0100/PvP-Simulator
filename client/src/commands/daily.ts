@@ -1,4 +1,4 @@
-import { Command, CommandContext } from '../../structures'
+import { Command, CommandContext } from '../structures'
 
 export default class DailyCommand extends Command {
   constructor () {

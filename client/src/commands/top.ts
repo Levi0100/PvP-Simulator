@@ -1,5 +1,5 @@
-import { User } from '../../../../database'
-import { App, Command, CommandContext, Embed } from '../../structures'
+import { User } from '../../../database'
+import { App, Command, CommandContext, Embed } from '../structures'
 
 interface CommandOptions {
   name?: string
@@ -7,6 +7,7 @@ interface CommandOptions {
   type?: number
   options?: any[]
 }
+
 export default class TopCommand extends Command {
   constructor (client: App) {
     super({
@@ -63,7 +64,7 @@ export default class TopCommand extends Command {
       embed.addField(`${pos++}º ${_user?.username}#${_user?.discriminator}`, `${user.granex.toLocaleString()} granex`)
     }
 
-    var index = users.findIndex(user => user.id === ctx.interaction.member?.id) + 1
+    var index = users.findIndex(user => user.id === ctx.member.id) + 1
 
     const _user = await this.client?.getRESTUser(users[0].id)
     embed.setThumbnail(_user?.avatarURL!)

@@ -1,5 +1,5 @@
-import { User } from '../../../../database'
-import { App, armors, Command, CommandContext, Embed, weapons } from '../../structures'
+import { User } from '../../../database'
+import { App, armors, Command, CommandContext, Embed, weapons } from '../structures'
 
 export default class ClaimCommand extends Command {
   constructor (client: App) {
@@ -40,7 +40,7 @@ export default class ClaimCommand extends Command {
   }
 
   async run (ctx: CommandContext) {
-    const user = await User.findById(ctx.interaction.member?.id)
+    const user = await User.findById(ctx.member.id)
     const option = ctx.interaction.data.options![0]
 
     var array = [
@@ -91,12 +91,12 @@ export default class ClaimCommand extends Command {
             .addFields([
               {
                 name: await this.locale.get('commands.get.def'),
-                value: armor.def,
+                value: armor.def.toString(),
                 inline: true
               },
               {
                 name: await this.locale.get('commands.get.rarity'),
-                value: armor.rarity,
+                value: armor.rarity.toString(),
                 inline: true
               }
             ])
@@ -139,12 +139,12 @@ export default class ClaimCommand extends Command {
             .addFields([
               {
                 name: await this.locale.get('commands.get.damage'),
-                value: weapon.damage,
+                value: weapon.damage.toString(),
                 inline: true
               },
               {
                 name: await this.locale.get('commands.get.rarity'),
-                value: weapon.rarity,
+                value: weapon.rarity.toString(),
                 inline: true
               }
             ])
@@ -195,12 +195,12 @@ export default class ClaimCommand extends Command {
             .addFields([
               {
                 name: await this.locale.get('commands.get.def'),
-                value: armor.def,
+                value: armor.def.toString(),
                 inline: true
               },
               {
                 name: await this.locale.get('commands.get.rarity'),
-                value: armor.rarity,
+                value: armor.rarity.toString(),
                 inline: true
               }
             ])
@@ -242,12 +242,12 @@ export default class ClaimCommand extends Command {
             .addFields([
               {
                 name: await this.locale.get('commands.get.damage'),
-                value: weapon.damage,
+                value: weapon.damage.toString(),
                 inline: true
               },
               {
                 name: await this.locale.get('commands.get.rarity'),
-                value: weapon.rarity,
+                value: weapon.rarity.toString(),
                 inline: true
               }
             ])

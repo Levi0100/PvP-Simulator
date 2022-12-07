@@ -1,5 +1,5 @@
-import { User } from '../../../../database'
-import { Command, CommandContext, Embed } from '../../structures'
+import { User } from '../../../database'
+import { Command, CommandContext, Embed } from '../structures'
 import { createCanvas, loadImage } from 'canvas'
 
 interface CommandOptions {
@@ -88,7 +88,7 @@ export default class InventoryCommand extends Command {
   }
 
   async run(ctx: CommandContext) {
-    const user = await User.findById(ctx.interaction.member?.id)
+    const user = await User.findById(ctx.member.id)
     const options = ctx.interaction.data.options as CommandOptions[]
     const embed = new Embed()
     const { armors } = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
