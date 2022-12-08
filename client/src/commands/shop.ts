@@ -112,7 +112,7 @@ export default class ShopCommand extends Command {
 
     switch (options[0].value) {
       case 'helmet': {
-        const locale = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
+        const locale = await import(`../../../locales/${ctx.db.user.locale}/armors`)
         var ams = armors.filter(w => w.type === 'helmet' && w.rarity < 4).slice(options[1]?.value ?? 1 * 10 - 10, options[1]?.value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
 
         var customId = 0
@@ -284,7 +284,7 @@ export default class ShopCommand extends Command {
       }
       break
       case 'chest': {
-        const locale = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
+        const locale = await import(`../../../locales/${ctx.db.user.locale}/armors`)
         var ams = armors.filter(w => w.type === 'chest' && w.rarity < 4).slice(options[1]?.value ?? 1 * 10 - 10, options[1]?.value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
 
         var customId = 0
@@ -456,7 +456,7 @@ export default class ShopCommand extends Command {
       }
       break
       case 'pants': {
-        const locale = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
+        const locale = await import(`../../../locales/${ctx.db.user.locale}/armors`)
         var ams = armors.filter(w => w.type === 'pants' && w.rarity < 4).slice(options[1]?.value ?? 1 * 10 - 10, options[1]?.value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
 
         var customId = 0
@@ -628,7 +628,7 @@ export default class ShopCommand extends Command {
       }
       break
       case 'boots': {
-        const locale = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
+        const locale = await import(`../../../locales/${ctx.db.user.locale}/armors`)
         var ams = armors.filter(w => w.type === 'boots' && w.rarity < 4).slice(options[1]?.value ?? 1 * 10 - 10, options[1]?.value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
 
         var customId = 0
@@ -800,7 +800,7 @@ export default class ShopCommand extends Command {
       }
       break
       case 'sword': {
-        const locale = await import(`../../../../locales/${ctx.db.user.locale}/weapons`)
+        const locale = await import(`../../../locales/${ctx.db.user.locale}/weapons`)
         var wps = weapons.filter(w => w.type === 'sword' && w.rarity < 4).slice(options[1]?.value ?? 1 * 10 - 10, options[1]?.value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
 
         var customId = 0
@@ -972,7 +972,7 @@ export default class ShopCommand extends Command {
       }
       break
       case 'broad_sword': {
-        const locale = await import(`../../../../locales/${ctx.db.user.locale}/weapons`)
+        const locale = await import(`../../../locales/${ctx.db.user.locale}/weapons`)
         var wps = weapons.filter(w => w.type === 'broad_sword' && w.rarity < 4).slice(options[1]?.value ?? 1 * 10 - 10, options[1]?.value ?? 1 * 10).sort((a, b) => b.price! - a.price!)
 
         var customId = 0

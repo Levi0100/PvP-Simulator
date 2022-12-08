@@ -207,8 +207,8 @@ export default class RemoveCommand extends Command {
   }
 
   async run (ctx: CommandContext) {
-    const { armors } = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
-    const { weapons } = await import(`../../../../locales/${ctx.db.user.locale}/weapons`)
+    const { armors } = await import(`../../../locales/${ctx.db.user.locale}/armors`)
+    const { weapons } = await import(`../../../locales/${ctx.db.user.locale}/weapons`)
     const user: any = await User.findById(ctx.member.id)
     const option = ctx.interaction.data.options![0] as CommandOptions
 

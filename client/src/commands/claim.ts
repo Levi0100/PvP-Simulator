@@ -70,7 +70,7 @@ export default class ClaimCommand extends Command {
             else amr =  armors.filter(armor => armor.rarity === 1)
 
             var armor = amr[Math.floor(Math.random() * amr.length)]
-            const locale = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
+            const locale = await import(`../../../locales/${ctx.db.user.locale}/armors`)
 
             var _armor = locale.armors[armor.type!][armor.name!]
 
@@ -118,7 +118,7 @@ export default class ClaimCommand extends Command {
             else wps =  weapons.filter(weapon => weapon.rarity === 1)
 
             var weapon = wps[Math.floor(Math.random() * wps.length)]
-            const locale = await import(`../../../../locales/${ctx.db.user.locale}/weapons`)
+            const locale = await import(`../../../locales/${ctx.db.user.locale}/weapons`)
 
             var _weapon = locale.weapons[weapon.type!][weapon.name!]
 
@@ -175,7 +175,7 @@ export default class ClaimCommand extends Command {
             else amr = armors.filter(armor => armor.rarity === 1)
 
             var armor = amr[Math.floor(Math.random() * amr.length)]
-            const locale = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
+            const locale = await import(`../../../locales/${ctx.db.user.locale}/armors`)
 
             var _armor = locale.armors[armor.type!][armor.name!]
 
@@ -222,7 +222,7 @@ export default class ClaimCommand extends Command {
             else wps =  weapons.filter(weapon => weapon.rarity === 1)
 
             var weapon = wps[Math.floor(Math.random() * wps.length)]
-            const locale = await import(`../../../../locales/${ctx.db.user.locale}/weapons`)
+            const locale = await import(`../../../locales/${ctx.db.user.locale}/weapons`)
 
             var _weapon = locale.weapons[weapon.type!][weapon.name!]
 

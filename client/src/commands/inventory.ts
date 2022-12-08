@@ -91,8 +91,8 @@ export default class InventoryCommand extends Command {
     const user = await User.findById(ctx.member.id)
     const options = ctx.interaction.data.options as CommandOptions[]
     const embed = new Embed()
-    const { armors } = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
-    const { weapons } = await import(`../../../../locales/${ctx.db.user.locale}/weapons`)
+    const { armors } = await import(`../../../locales/${ctx.db.user.locale}/armors`)
+    const { weapons } = await import(`../../../locales/${ctx.db.user.locale}/weapons`)
 
     if (options) {
       switch (options[0].value) {
@@ -230,8 +230,8 @@ export default class InventoryCommand extends Command {
       }
     }
     else {
-      const { weapons } = await import(`../../../../locales/${ctx.db.user.locale}/weapons`)
-      const { armors } = await import(`../../../../locales/${ctx.db.user.locale}/armors`)
+      const { weapons } = await import(`../../../locales/${ctx.db.user.locale}/weapons`)
+      const { armors } = await import(`../../../locales/${ctx.db.user.locale}/armors`)
       const canvas = createCanvas(2200, 1100)
       const _canvas = createCanvas(2200, 1100)
       const context = canvas.getContext('2d')
