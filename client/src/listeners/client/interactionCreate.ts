@@ -12,6 +12,8 @@ export default class InteractionCreateListener extends Listener {
 
   async on (interaction: ComponentInteraction) {
     if (!interaction.data.custom_id) return
+    if (interaction.guildID !== '721384921679265833') return
+    if (!interaction.message.embeds[0]) return
 
     const user = await User.findById(interaction.message.embeds[0].footer?.text)
     const _user = await this.client?.getRESTUser(user?.id)
