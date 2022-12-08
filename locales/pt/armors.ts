@@ -29,6 +29,10 @@ export const armors = {
       name: 'Capacete de',
       rarity: 1,
       def: 1
+    },
+    christmas: {
+      type: 'Natalino',
+      name: 'Capatece'
     }
   },
   chest: {
@@ -67,6 +71,10 @@ export const armors = {
       name: 'Peitoral de',
       rarity: 1,
       def: 1
+    },
+    christmas: {
+      type: 'Natalino',
+      name: 'Peitoral'
     }
   },
   pants: {
@@ -99,6 +107,10 @@ export const armors = {
       name: 'Calça de',
       rarity: 1,
       def: 1
+    },
+    christmas: {
+      type: 'Natalina',
+      name: 'Calça'
     }
   },
   boots: {
@@ -131,6 +143,10 @@ export const armors = {
       name: 'Botas de',
       rarity: 1,
       def: 1
+    },
+    christmas: {
+      type: 'Natalinas',
+      name: 'Botas'
     }
   }
 }

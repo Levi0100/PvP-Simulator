@@ -59,6 +59,10 @@ export const weapons = {
       name: 'Espada da',
       rarity: 1,
       damage: 81
+    },
+    christmas: {
+      type: 'Natalina',
+      name: 'Espada'
     }
   },
   broad_sword: {
@@ -121,6 +125,10 @@ export const weapons = {
       name: 'Espadão',
       damage: 131,
       rarity: 5
+    },
+    christmas: {
+      type: 'Natalino',
+      name: 'Espadão'
     }
   }
 }

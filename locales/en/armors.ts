@@ -19,6 +19,10 @@ export const armors = {
     bronze: {
       type: 'Bronze',
       name: 'Helmet'
+    },
+    christmas: {
+      type: 'Helmet',
+      name: 'Chritmas'
     }
   },
   chest: {
@@ -45,6 +49,10 @@ export const armors = {
     bronze: {
       type: 'Bronze',
       name: 'Chest of'
+    },
+    christmas: {
+      type: 'Chest',
+      name: 'Chritmas'
     }
   },
   pants: {
@@ -67,6 +75,10 @@ export const armors = {
     bronze: {
       type: 'Bronze',
       name: 'Pants of'
+    },
+    christmas: {
+      type: 'Pants',
+      name: 'Chritmas'
     }
   },
   boots: {
@@ -89,6 +101,10 @@ export const armors = {
     bronze: {
       type: 'Bronze',
       name: 'Boots of'
+    },
+    christmas: {
+      type: 'Boots',
+      name: 'Chritmas'
     }
   }
 }

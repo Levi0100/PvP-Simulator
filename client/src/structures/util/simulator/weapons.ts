@@ -132,5 +132,17 @@ export default [
     type: 'broad_sword',
     damage: 131,
     rarity: 5
+  },
+  {
+    name: 'christmas',
+    type: 'broad_sword',
+    damage: 157,
+    rarity: 5
+  },
+  {
+    name: 'christmas',
+    type: 'sword',
+    damage: 154,
+    rarity: 5
   }
 ]

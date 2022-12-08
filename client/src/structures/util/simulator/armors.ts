@@ -154,5 +154,29 @@ export default [
     rarity: 1,
     def: 2,
     price: 3000
+  },
+  {
+    name: 'christmas',
+    type: 'helmet',
+    def: 30,
+    rarity: 5
+  },
+  {
+    name: 'christmas',
+    type: 'chest',
+    def: 30,
+    rarity: 5
+  },
+  {
+    name: 'christmas',
+    type: 'pants',
+    def: 10,
+    rarity: 5
+  },
+  {
+    name: 'christmas',
+    type: 'boots',
+    def: 10,
+    rarity: 5
   }
 ]
