@@ -16,7 +16,8 @@ export const commands = {
   daily: {
     has_been_picked: 'Você já coletou seu prêmio diário. Tente novamente {time}',
     congrats: 'No prêmio diário de hoje você recebeu {granex} Granex!',
-    congrats2: 'Parabéns, que sortudo! Você ganhou um bônus de {refinedGranex} Granex Refinado.'
+    congrats2: 'Parabéns, que sortudo! Você ganhou um bônus de {refinedGranex} Granex Refinado.',
+    boost: 'Você recebeu um boost de `2x` no prêmio diário devido ao evento de natal.'
   },
   get: {
     congrats: 'A arma **{weapon}** acaba de chegar de forma gratuita para você!',

@@ -20,7 +20,8 @@ export default class DailyCommand extends Command {
       time: `<t:${parseInt(((ctx.db.user.dailyTime) / 1000).toString())}:R>`
     })
     
-    var granex = Math.floor(Math.random() * (500 - 150) + 150)
+    var granex = (Math.floor(Math.random() * (500 - 150) + 150)) * 2
+    console.log(granex)
     ctx.db.user.dailyTime = new Date().setHours(24, 0, 0, 0)
     ctx.db.user.granex += granex
 
@@ -39,6 +40,8 @@ export default class DailyCommand extends Command {
         refinedGranex
       })
     }
+
+    ctx.reply('commands.daily.boost')
 
     ctx.db.user.save()
   }
