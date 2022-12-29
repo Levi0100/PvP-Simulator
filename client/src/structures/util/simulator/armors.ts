@@ -155,7 +155,7 @@ export default [
     def: 2,
     price: 3000
   },
-  {
+  /*{
     name: 'christmas',
     type: 'helmet',
     def: 30,
@@ -178,5 +178,5 @@ export default [
     type: 'boots',
     def: 10,
     rarity: 5
-  }
+  }*/
 ]
