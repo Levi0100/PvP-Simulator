@@ -49,8 +49,8 @@ export const commands = {
     embed: {
       title: 'Seu Inventário',
       footer: 'Filtro: {filter}',
-      field: 'Posição: {pos}\nDefesa: {def}\nRaridade: {rarity}',
-      field2: 'Posição: {pos}\nDano: {damage}\nRaridade: {rarity}'
+      field: 'Posição: `{pos}`\nDefesa: `{def}`\nRaridade: `{rarity}`',
+      field2: 'Posição: `{pos}`\nDano: `{damage}`\nRaridade: `{rarity}`'
     },
     empty: 'Vazio... igual a conta bancária do meu criador.',
     def: 'Defesa: {def}',

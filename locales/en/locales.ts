@@ -48,8 +48,8 @@ export const commands = {
     embed: {
       title: 'Your inventory',
       footer: 'Filtro: {filter}',
-      field: 'Position: {pos}\nDefense: {def}\nRarity: {rarity}',
-      field2: 'Position: {pos}\nDamage: {damage}\nRarity: {rarity}'
+      field: 'Position: `{pos}`\nDefense: `{def}`\nRarity: `{rarity}`',
+      field2: 'Position: `{pos}`\nDamage: `{damage}`\nRarity: `{rarity}`'
     },
     empty: 'Empty... like my creator\'s bank account.',
     def: 'Defense: {def}',

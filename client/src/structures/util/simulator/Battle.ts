@@ -37,6 +37,13 @@ export default class Battle {
     if (p2?.inUse?.weapon.type === 'broad_sword') damage += 6
     if (damage < 0) damage = 0
 
+    console.log(damage)
+    switch (p1?.inUse?.weapon.name) {
+      case 'charmed': if (p1?.inUse?.weapon.name === p1?.inUse?.helmet.name && p1?.inUse?.weapon.name === p1?.inUse?.chest.name && p1?.inUse?.weapon.name === p1?.inUse?.pants.name && p1?.inUse?.weapon.name === p1?.inUse?.boots.name) damage += 8
+      break
+      case 'angels': if (p1?.inUse?.weapon.name === p1?.inUse?.helmet.name && p1?.inUse?.weapon.name === p1?.inUse?.chest.name && p1?.inUse?.weapon.name === p1?.inUse?.pants.name && p1?.inUse?.weapon.name === p1?.inUse?.boots.name) damage += 9
+    }
+
     p2!.energy -= damage
     if (p2!.energy < 0) p2!.energy = 0
 
